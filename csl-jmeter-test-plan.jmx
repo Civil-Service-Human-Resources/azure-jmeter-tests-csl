@@ -9,6 +9,7 @@
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
     </TestPlan>
     <hashTree>
       <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
@@ -52,14 +53,9 @@
             <stringProp name="Argument.value">staging-lpg.cshr.digital</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="PASSED" elementType="Argument">
-            <stringProp name="Argument.name">PASSED</stringProp>
-            <stringProp name="Argument.value">0</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="FAILED" elementType="Argument">
-            <stringProp name="Argument.name">FAILED</stringProp>
-            <stringProp name="Argument.value">0</stringProp>
+          <elementProp name="ErrorThreshold" elementType="Argument">
+            <stringProp name="Argument.name">ErrorThreshold</stringProp>
+            <stringProp name="Argument.value">${__P(errorThreshold,0.1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -237,6 +233,15 @@
               <stringProp name="TestPlan.comments">Recorded time was 5845 milliseconds</stringProp>
             </UniformRandomTimer>
             <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">selectedCourse</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;a class=&quot;lpg-course-link&quot; href=&quot;(.+?)&quot;&gt;(.+?)&lt;/a&gt;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">0</stringProp>
+            </RegexExtractor>
+            <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="req_select-course" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
@@ -246,7 +251,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/courses/Ft6zHR6bTy-Bin6aexgRjw</stringProp>
+            <stringProp name="HTTPSampler.path">${selectedCourse}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -978,7 +983,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">{search-keyword}</stringProp>
+            <stringProp name="HTTPSampler.path">${searchUri}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1298,7 +1303,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="req_search-course" enabled="false">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="req_search-course" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
@@ -1306,7 +1311,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">{search-keyword}</stringProp>
+            <stringProp name="HTTPSampler.path">${searchUri}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1352,7 +1357,7 @@
             </RegexExtractor>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="req_view-modules" enabled="false">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="req_view-modules" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
@@ -1398,15 +1403,15 @@
             <hashTree/>
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-              <stringProp name="RegexExtractor.refname">selected_course</stringProp>
-              <stringProp name="RegexExtractor.regex">&lt;a href=&quot;(.+?)&quot; target=&quot;_blank&quot; (.*?)&gt;</stringProp>
+              <stringProp name="RegexExtractor.refname">selectedModule</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;a href=&quot;(.+?)&quot;(?s).*Start</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default"></stringProp>
               <stringProp name="RegexExtractor.match_number">0</stringProp>
             </RegexExtractor>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="req_do-course" enabled="false">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="req_do-course" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
@@ -1414,7 +1419,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${selected_module}</stringProp>
+            <stringProp name="HTTPSampler.path">${selectedModule}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1497,23 +1502,6 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
-          <boolProp name="resetInterpreter">false</boolProp>
-          <stringProp name="parameters"></stringProp>
-          <stringProp name="filename"></stringProp>
-          <stringProp name="script">boolean isSuccessful = prev.isSuccessful();
-
-int passed = Integer.parseInt(vars.get(&quot;PASSED&quot;)) + 1;
-int failed = Integer.parseInt(vars.get(&quot;FAILED&quot;)) + 1;
-
-if (isSuccessful){
-  vars.put(&quot;PASSED&quot;, passed.toString());
-}else{
-  vars.put(&quot;FAILED&quot;, failed.toString());
-}
-</stringProp>
-        </BeanShellPostProcessor>
-        <hashTree/>
       </hashTree>
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="users" enabled="true">
         <stringProp name="delimiter">,</stringProp>
@@ -1530,7 +1518,7 @@ if (isSuccessful){
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="search-keywords" enabled="true">
         <stringProp name="filename">data/search-keywords.csv</stringProp>
         <stringProp name="fileEncoding"></stringProp>
-        <stringProp name="variableNames">search-keyword</stringProp>
+        <stringProp name="variableNames">searchUri</stringProp>
         <boolProp name="ignoreFirstLine">false</boolProp>
         <stringProp name="delimiter">,</stringProp>
         <boolProp name="quotedData">false</boolProp>
@@ -1658,10 +1646,15 @@ if (isSuccessful){
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+String journeyName = ctx.getThreadGroup().getName();
+
+if (journeyName.equals(&quot;tg_SetUp&quot;)){
+	return;
+}
+
 int numThreads = ctx.getThreadGroup().getNumThreads();
 int thrNumber = ctx.getThreadNum() + 1;
 
-String journeyName = ctx.getThreadGroup().getName();
 String stepName = ctx.getCurrentSampler().getName();
 
 String startTime = ctx.getThread().getStartTime().toString();
@@ -1670,7 +1663,6 @@ String endTime = ctx.getThread().getEndTime().toString();
 String respCode = ctx.getPreviousResult().getResponseCode();
 String respMsg = ctx.getPreviousResult().getResponseMessage();
 
-//String responseTime = ctx.getPreviousResult().getTimeStamp().toString();
 String responseTime = ctx.getPreviousResult().getTime().toString();
 
 Date dt = new Date();
@@ -1678,28 +1670,113 @@ SimpleDateFormat df = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;);
 dt.setDate(dt.getDate());
 String fmtDate = df.format(dt);
 
-//log.info(&quot;responseTime: &quot; + responseTime);
+boolean isSuccessful = prev.isSuccessful();
 
-log.info(fmtDate + &quot;, journey: &quot; + journeyName + &quot;, step: &quot; + stepName + &quot;, Thread: &quot; + thrNumber + &quot;, startedAt: &quot; + startTime + &quot;, endedAt: &quot; + endTime + &quot;, status: &quot; + respCode + &quot;, responseTime: &quot; + responseTime);
+// passed and failed calculation
+int passed = Integer.parseInt(props.get(&quot;PASSED&quot;)) + 1;
+int failed = Integer.parseInt(props.get(&quot;FAILED&quot;)) + 1;
+long totalRequests = Long.parseLong(props.get(&quot;TOTAL_REQUESTS&quot;)) + 1;
+
+double newResponseTime = Double.parseDouble(responseTime);
+double responseTimeTotal = Double.parseDouble(props.get(&quot;RESPONSE_TIME&quot;)) + newResponseTime;
+double maxResponseTime = Double.parseDouble(props.get(&quot;MAX_RESPONSE_TIME&quot;));
+
+props.put(&quot;TOTAL_REQUESTS&quot;, totalRequests.toString());
+props.put(&quot;RESPONSE_TIME&quot;, responseTimeTotal.toString());
+
+
+if ( maxResponseTime &lt; newResponseTime){
+	props.put(&quot;MAX_RESPONSE_TIME&quot;, newResponseTime.toString());
+}
+
+
+
+if (isSuccessful){
+  props.put(&quot;PASSED&quot;, passed.toString());
+}else{
+  props.put(&quot;FAILED&quot;, failed.toString());
+}
+
+log.info(fmtDate + &quot;, journey: &quot; + journeyName + &quot;, step: &quot; + stepName + &quot;, Thread: &quot; + thrNumber + &quot;, startedAt: &quot; + startTime + &quot;, endedAt: &quot; + endTime + &quot;, status: &quot; + respCode + &quot;, responseTime: &quot; + responseTime + &quot;, totalRpt: &quot; + responseTimeTotal.toString());
 </stringProp>
       </BeanShellPostProcessor>
       <hashTree/>
-      <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="bsSummary" enabled="true">
-        <boolProp name="resetInterpreter">false</boolProp>
-        <stringProp name="parameters"></stringProp>
-        <stringProp name="filename"></stringProp>
-        <stringProp name="script">int passed = Integer.parseInt(vars.get(&quot;PASSED&quot;));
-int failed = Integer.parseInt(vars.get(&quot;FAILED&quot;));
+      <PostThreadGroup guiclass="PostThreadGroupGui" testclass="PostThreadGroup" testname="tg_TearDown" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </PostThreadGroup>
+      <hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="bsGenerateSummary" enabled="true">
+          <stringProp name="BeanShellSampler.query">
+String journeyName = ctx.getThreadGroup().getName();
 
-int total_requests = passed + failed;
+if (journeyName.equals(&quot;tg_SetUp&quot;)){
+	return;
+}
 
-String perc_passed = (passed / total_requests * 100).toString();
-String perc_failed = (failed / total_requests * 100).toString();
+int passed = Integer.parseInt(props.get(&quot;PASSED&quot;));
+int failed = Integer.parseInt(props.get(&quot;FAILED&quot;));
+long total_requests = Long.parseLong(props.get(&quot;TOTAL_REQUESTS&quot;));
+double totalResponsTime = Double.parseDouble(props.get(&quot;RESPONSE_TIME&quot;));
+double maxResponsTime = Double.parseDouble(props.get(&quot;MAX_RESPONSE_TIME&quot;));
 
+String avgResponseTime = (Math.round( (totalResponsTime * 1.0) / total_requests )).toString();
+String perc_passed = (Math.round( (passed * 1.0) / total_requests * 100.0)).toString();
+String perc_failed = (Math.round( (failed * 1.0) / total_requests * 100.0)).toString();
 
-log.info(&quot;PASSED: &quot; + passed.toString() + &quot; [ &quot; + perc_passed + &quot;% ] , FAILED: &quot; + failed.toString() + &quot; [ &quot; + perc_failed + &quot;% ] &quot;);</stringProp>
-      </BeanShellPostProcessor>
-      <hashTree/>
+log.info(&quot;---------------------------------------------------------------&quot;);
+log.info(&quot;                   S U M M A R Y  R E P O R T                  &quot;);
+log.info(&quot;---------------------------------------------------------------&quot;);
+log.info(&quot;&quot;);
+log.info(&quot;TOT.REQ       : &quot; + total_requests);
+log.info(&quot;PASSED        : &quot; + passed.toString() + &quot; [ &quot; + perc_passed + &quot;% ]&quot;);
+log.info(&quot;FAILED        : &quot; + failed.toString() + &quot; [ &quot; + perc_failed + &quot;% ]&quot;);
+log.info(&quot;MAX RPT       : &quot; + maxResponsTime + &quot; ms&quot;);
+log.info(&quot;AVG RPT       : &quot; + avgResponseTime + &quot; ms&quot;);
+log.info(&quot;&quot;);
+log.info(&quot;--------------------- END OF TEST SUMMARY ---------------------&quot;);
+</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+      </hashTree>
+      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="tg_SetUp" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </SetupThreadGroup>
+      <hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="bsInit" enabled="true">
+          <stringProp name="BeanShellSampler.query">props.put(&quot;PASSED&quot;, &quot;0&quot;);
+props.put(&quot;FAILED&quot;, &quot;0&quot;);
+props.put(&quot;TOTAL_REQUESTS&quot;,&quot;0&quot;);
+props.put(&quot;RESPONSE_TIME&quot;,&quot;0&quot;);
+props.put(&quot;MAX_RESPONSE_TIME&quot;,&quot;0&quot;);
+
+</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+      </hashTree>
     </hashTree>
   </hashTree>
 </jmeterTestPlan>
