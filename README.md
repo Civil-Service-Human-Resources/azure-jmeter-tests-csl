@@ -26,6 +26,9 @@ for more information please refer to the Apache JMeter documentation [here](http
 
 ```nohup /opt/jmeter-5.1.1/bin/jmeter -p user.properties -n -t csl-jmeter-test-plan.jmx > jmeter.log 2>&1 &```
 
+Also if you want to generate a JTL report you may append the below 
+
+```-l <resultfile>.jtl```
 
 ### Data file content format
 

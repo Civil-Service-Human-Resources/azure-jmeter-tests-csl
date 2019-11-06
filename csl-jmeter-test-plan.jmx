@@ -53,11 +53,6 @@
             <stringProp name="Argument.value">staging-lpg.cshr.digital</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="ErrorThreshold" elementType="Argument">
-            <stringProp name="Argument.name">ErrorThreshold</stringProp>
-            <stringProp name="Argument.value">${__P(errorThreshold,0.1)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
@@ -103,7 +98,7 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">${__P(loopCount,1)}</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${__P(numThreads,1)}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threadGroup_1,1)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,1)}</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration">0</stringProp>
@@ -341,7 +336,7 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">${__P(loopCount,1)}</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${__P(numThreads,1)}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threadGroup_2,1)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,1)}</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
@@ -570,7 +565,7 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">${__P(loopCount,1)}</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${__P(numThreads,1)}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threadGroup_3,1)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,1)}</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
@@ -799,7 +794,7 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">${__P(loopCount,1)}</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${__P(numThreads,1)}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threadGroup_4,1)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,1)}</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
@@ -1127,7 +1122,7 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">${__P(loopCount,1)}</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${__P(numThreads,1)}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threadGroup_5,1)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,1)}</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
@@ -1684,20 +1679,24 @@ double maxResponseTime = Double.parseDouble(props.get(&quot;MAX_RESPONSE_TIME&qu
 props.put(&quot;TOTAL_REQUESTS&quot;, totalRequests.toString());
 props.put(&quot;RESPONSE_TIME&quot;, responseTimeTotal.toString());
 
-
 if ( maxResponseTime &lt; newResponseTime){
 	props.put(&quot;MAX_RESPONSE_TIME&quot;, newResponseTime.toString());
 }
 
-
-
 if (isSuccessful){
-  props.put(&quot;PASSED&quot;, passed.toString());
+	props.put(&quot;PASSED&quot;, passed.toString());
 }else{
-  props.put(&quot;FAILED&quot;, failed.toString());
+  	props.put(&quot;FAILED&quot;, failed.toString());
 }
 
-log.info(fmtDate + &quot;, journey: &quot; + journeyName + &quot;, step: &quot; + stepName + &quot;, Thread: &quot; + thrNumber + &quot;, startedAt: &quot; + startTime + &quot;, endedAt: &quot; + endTime + &quot;, status: &quot; + respCode + &quot;, responseTime: &quot; + responseTime + &quot;, totalRpt: &quot; + responseTimeTotal.toString());
+if (!Boolean.parseBoolean(props.get(&quot;customLogOutputEnabled&quot;))){
+	return;
+}
+
+//responseTimeTotal.toString()
+
+log.info(fmtDate + &quot;, journey: &quot; + journeyName + &quot;, step: &quot; + stepName + &quot;, Thread: &quot; + thrNumber + &quot;, startedAt: &quot; + startTime + &quot;, endedAt: &quot; + endTime + &quot;, status: &quot; + respCode + &quot;, responseTime: &quot; + responseTime);
+
 </stringProp>
       </BeanShellPostProcessor>
       <hashTree/>
@@ -1769,6 +1768,64 @@ props.put(&quot;FAILED&quot;, &quot;0&quot;);
 props.put(&quot;TOTAL_REQUESTS&quot;,&quot;0&quot;);
 props.put(&quot;RESPONSE_TIME&quot;,&quot;0&quot;);
 props.put(&quot;MAX_RESPONSE_TIME&quot;,&quot;0&quot;);
+
+boolean CUSTOM_LOG_ENABLED = Boolean.parseBoolean(props.get(&quot;customLogOutputEnabled&quot;));
+
+float numThreads = Float.parseFloat(props.get(&quot;numThreads&quot;));
+float numJounerys = Float.parseFloat(props.get(&quot;numUserJouneys&quot;));
+
+float journey_1_split = Float.parseFloat(props.get(&quot;userJourney_1_split&quot;));
+float journey_2_split = Float.parseFloat(props.get(&quot;userJourney_2_split&quot;));
+float journey_3_split = Float.parseFloat(props.get(&quot;userJourney_3_split&quot;));
+float journey_4_split = Float.parseFloat(props.get(&quot;userJourney_4_split&quot;));
+float journey_5_split = Float.parseFloat(props.get(&quot;userJourney_5_split&quot;));
+
+float totalSplit = journey_1_split + journey_2_split + journey_3_split + journey_4_split + journey_5_split;
+
+log.info(&quot;------------ Test plan setup ------------&quot;);
+log.info(&quot;Total user journeys       : &quot; + numJounerys.toString());
+log.info(&quot;Total thread count        : &quot; + numThreads.toString());
+log.info(&quot;Total thread split        : &quot; + totalSplit.toString());
+log.info(&quot;Custom log output enabled : &quot; + CUSTOM_LOG_ENABLED.toString());
+log.info(&quot;-----------------------------------------&quot;);
+
+if (!(numThreads &gt;= numJounerys)){
+	log.info(&quot;The total thread count is below minimum (5). The numThreads should at least be equal to the user journeys count\n Aborting the test.&quot;);
+	
+	ctx.getEngine().stopTest();
+	return; 
+}
+
+if ( totalSplit.toString().equals(&quot;1.0&quot;) ){
+
+	String group1 = (Math.round(journey_1_split * numThreads)).toString();
+	String group2 = (Math.round(journey_1_split * numThreads)).toString();
+	String group3 = (Math.round(journey_1_split * numThreads)).toString();
+	String group4 = (Math.round(journey_1_split * numThreads)).toString();
+	String group5 = (Math.round(journey_1_split * numThreads)).toString();
+
+	log.info(&quot;----------- Thread allocation -----------&quot;);
+	log.info(&quot;Thread group 1     : &quot; + group1);
+	log.info(&quot;Thread group 2     : &quot; + group2);
+	log.info(&quot;Thread group 3     : &quot; + group3);
+	log.info(&quot;Thread group 4     : &quot; + group4);
+	log.info(&quot;Thread group 5     : &quot; + group5);
+	log.info(&quot;Total thread split : &quot; + (totalSplit * 100).toString() + &quot;%&quot;);
+	log.info(&quot;-----------------------------------------&quot;);
+	
+	props.put(&quot;threadGroup_1&quot;, (Math.round(journey_1_split * numThreads)).toString());
+	props.put(&quot;threadGroup_2&quot;, (Math.round(journey_2_split * numThreads)).toString());
+	props.put(&quot;threadGroup_3&quot;, (Math.round(journey_3_split * numThreads)).toString());
+	props.put(&quot;threadGroup_4&quot;, (Math.round(journey_4_split * numThreads)).toString());
+	props.put(&quot;threadGroup_5&quot;, (Math.round(journey_5_split * numThreads)).toString());	
+	
+}else{
+	log.info(&quot;Total split should add upto 1.0 (100%)\nAborting the test.&quot;);
+		
+	ctx.getEngine().stopTest();
+	return; 
+}
+
 
 </stringProp>
           <stringProp name="BeanShellSampler.filename"></stringProp>
