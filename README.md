@@ -1,5 +1,7 @@
 # JMeter How to guide
 
+for more information please refer to the Apache JMeter documentation [here](https://jmeter.apache.org/usermanual/remote-test.html)
+
 ### What's included
 
 1. JMeter test plan (csl-jmeter-test-plan.jmx)
