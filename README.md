@@ -6,8 +6,8 @@
 2. Custom user properties file (user.properties)
 3. Folder which contains data files (data/)
 
-...* Users list (users.csv)
-...* Search URIs with keywords (search-keywords.csv)
+* Users list (users.csv)
+* Search URIs with keywords (search-keywords.csv)
 
 ### Dependencies
 
@@ -22,14 +22,15 @@
 2. Start JMeter server on all server nodes
 3. Start jmeter on the client node (see example below)
 
-..```nohup /opt/jmeter-5.1.1/bin/jmeter -p user.properties -n -t csl-jmeter-test-plan.jmx > jmeter.log 2>&1 &```
+```nohup /opt/jmeter-5.1.1/bin/jmeter -p user.properties -n -t csl-jmeter-test-plan.jmx > jmeter.log 2>&1 &```
 
 
 ### Data file content format
 
 1. users.csv (username, password)
 
-...```test01@example.com,Perf7890```
+```test01@example.com,Perf7890```
+
 2. search-keywords.csv (search-uri)
 
-...```/search?q=success+profiles```
+```/search?q=success+profiles```
