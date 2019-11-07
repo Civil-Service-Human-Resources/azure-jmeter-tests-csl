@@ -39,3 +39,12 @@ Also if you want to generate a JTL report you may append the below
 2. search-keywords.csv (search-uri)
 
 ```/search?q=success+profiles```
+
+### Reporting
+
+Blazemeter plugin has been integrated in JMeter to be able to upload stats. Following are the configurations related to reporting.
+
+* ```testName=QuickTest```
+* ```bzmProjectID=<BlazeMeterProjectID>```
+* ```bzmAPIKeyAndSecret=<BlazeMeterKeyId:Secret>```
+
