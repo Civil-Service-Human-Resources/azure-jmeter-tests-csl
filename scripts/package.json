@@ -7,7 +7,8 @@
     "faker": "^4.1.0",
     "moment": "^2.24.0",
     "mysql": "^2.17.1",
-    "uuid": "^3.3.3"
+    "uuid": "^3.3.3",
+    "mysql-promise": "^5.0.0"
   },
   "devDependencies": {},
   "scripts": {
