@@ -7,6 +7,7 @@ for more information please refer to the Apache JMeter documentation [here](http
 1. JMeter test plan (csl-jmeter-test-plan.jmx)
 2. Custom user properties file (user.properties)
 3. Folder which contains data files (data/)
+4. A traget environment to run the test 
 
 * Users list (users.csv)
 * Search URIs with keywords (search-keywords.csv)
@@ -39,6 +40,13 @@ Also if you want to generate a JTL report you may append the below
 2. search-keywords.csv (search-uri)
 
 ```/search?q=success+profiles```
+
+The user properties file is self explanatory. I have covered a subset of the configuration options below
+
+### Environment details
+
+* ```base_url_identity_service=<staging-identity.cshr.digital>```
+* ```base_url_lpg_service=<staging-lpg.cshr.digital>```
 
 ### Reporting
 

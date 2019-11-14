@@ -45,12 +45,12 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="BASE_URL_IDENTITY_SERVICE" elementType="Argument">
             <stringProp name="Argument.name">BASE_URL_IDENTITY_SERVICE</stringProp>
-            <stringProp name="Argument.value">staging-identity.cshr.digital</stringProp>
+            <stringProp name="Argument.value">${__P(base_url_identity_service,&quot;&quot;)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="BASE_URL_LPG_SERVICE" elementType="Argument">
             <stringProp name="Argument.name">BASE_URL_LPG_SERVICE</stringProp>
-            <stringProp name="Argument.value">staging-lpg.cshr.digital</stringProp>
+            <stringProp name="Argument.value">${__P(base_url_lpg_service,&quot;&quot;)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -1884,7 +1884,7 @@ if ( totalSplit.toString().equals(&quot;1.0&quot;) ){
         </BeanShellSampler>
         <hashTree/>
       </hashTree>
-      <kg.apc.jmeter.reporters.bzm.BlazeMeterUploader guiclass="kg.apc.jmeter.reporters.bzm.BlazeMeterUploaderGui" testclass="kg.apc.jmeter.reporters.bzm.BlazeMeterUploader" testname="bzmUploader" enabled="true">
+      <kg.apc.jmeter.reporters.bzm.BlazeMeterUploader guiclass="kg.apc.jmeter.reporters.bzm.BlazeMeterUploaderGui" testclass="kg.apc.jmeter.reporters.bzm.BlazeMeterUploader" testname="bzmUploader" enabled="false">
         <elementProp name="arguments" elementType="Arguments">
           <collectionProp name="Arguments.arguments"/>
         </elementProp>
