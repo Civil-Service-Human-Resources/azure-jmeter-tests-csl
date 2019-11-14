@@ -11,9 +11,10 @@ const con = dbConnector.connectMysql({
     }
 });
 
-const USERS_TO_LOAD = parseInt(process.env.USERS_TO_LOAD || '10' ,10)
-const PAGE = parseInt(process.env.PAGE || '0' ,10)
-const SHOULD_TRUNCATE = (process.env.SHOULD_TRUNCATE || 'true') === 'true'
+const USERS_TO_LOAD = parseInt(process.env.USERS_TO_LOAD || '10' ,10);
+const PAGE = parseInt(process.env.PAGE || '0' ,10);
+const SHOULD_TRUNCATE = (process.env.SHOULD_TRUNCATE || 'true') === 'true';
+const IDENTITY_ROLE = parseInt(process.env.ID_ROLE || '1', 10);
 
 // truncate tables
 async function cleanUp () {
@@ -29,7 +30,7 @@ async function cleanUp () {
     for (var i=0; i<deleteStatements.length; i++){
         await con.query(deleteStatements[i]);
 	}
-	
+
 	await con.commit()
 }
 
@@ -38,7 +39,7 @@ async function createNewIdentityRole (uniqueId) {
 
     const newIdentityRole = {
         identity_id: uniqueId,
-        role_id: 1
+        role_id: IDENTITY_ROLE
     };
 
     try {
