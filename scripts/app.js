@@ -1,28 +1,22 @@
-const mysql = require('mysql');
 const moment = require('moment');
 const uuidv1 = require('uuid/v1');
 const dbConnector = require('./database-connector')
 
 const con = dbConnector.connectMysql({
-    host: 'localhost',
-    user: 'changeme',
-    password: 'changeme',
+    host: process.env.DB_HOST || 'host',
+    user: process.env.DB_USER || 'user',
+    password: process.env.DB_PASS || 'pass',
     ssl: {
         rejectUnauthorized: false
     }
 });
 
+const USERS_TO_LOAD = parseInt(process.env.USERS_TO_LOAD || '10' ,10)
+const PAGE = parseInt(process.env.PAGE || '0' ,10)
+const SHOULD_TRUNCATE = (process.env.SHOULD_TRUNCATE || 'true') === 'true'
+
 // truncate tables
 async function cleanUp () {
-    const truncateStatements = [
-        'TRUNCATE TABLE identity.identity',
-        'TRUNCATE TABLE identity.identity_role',
-        'TRUNCATE TABLE csrs.identity',
-        'TRUNCATE TABLE csrs.civil_servant',
-        'TRUNCATE TABLE csrs.civil_servant_other_areas_of_work',
-        'TRUNCATE TABLE csrs.civil_servant_interests'
-    ];
-
     const deleteStatements = [
         'delete from csrs.civil_servant_interests  where civil_servant_id >1',
         'delete from csrs.civil_servant_other_areas_of_work  where civil_servant_id >1',
@@ -34,7 +28,9 @@ async function cleanUp () {
 
     for (var i=0; i<deleteStatements.length; i++){
         await con.query(deleteStatements[i]);
-    }
+	}
+	
+	await con.commit()
 }
 
 // identity.identity_role
@@ -46,8 +42,8 @@ async function createNewIdentityRole (uniqueId) {
     };
 
     try {
-        await con.query('INSERT INTO identity.identity_role SET ?', newIdentityRole);
-    }catch (err) {
+		await con.query('INSERT INTO identity.identity_role SET ?', newIdentityRole);
+	} catch (err) {
         _logAndThrow(err);
     }
 }
@@ -67,8 +63,10 @@ async function createNewCsrsCivilServant (identityId, mail) {
     };
 
     try {
-        await con.query('INSERT INTO csrs.civil_servant SET ?', newCivilServantIdentity);
-    } catch (err) {
+		await con.query('INSERT INTO csrs.civil_servant SET ?', newCivilServantIdentity);
+		var selectResult = await con.query('SELECT id FROM csrs.civil_servant WHERE identity_id = ?', identityId);
+		return selectResult[0].id
+	} catch (err) {
        _logAndThrow(err);
     }
 }
@@ -82,7 +80,7 @@ async function createNewCsrsCivilServantInterest (identityId) {
 
     try{
         await con.query('INSERT INTO csrs.civil_servant_interests SET ?', newCivilServantInterests);
-    }catch(e) {
+	} catch(e) {
         _logAndThrow(e);
     }
 }
@@ -96,20 +94,23 @@ async function createNewCsrsCivilServantOtherAreasOfWork (identityId) {
 
     try {
         await con.query('INSERT INTO csrs.civil_servant_other_areas_of_work SET ?', newCivilServantOtherAreasOfWork);
-        createNewCsrsCivilServantInterest(identityId);
+		createNewCsrsCivilServantInterest(identityId);
     } catch (err) {
         _logAndThrow(err);
     }
 }
 
-async function createIdentityData (identityDto) {
+async function createIdentityData (identityDto, commitAfter) {
     try {
-        const result = await con.query('INSERT INTO identity.identity SET ?', identityDto);
+		await con.query('INSERT INTO identity.identity SET ?', identityDto);
         var identityUUID = identityDto.uid;
         const resultSelect = await con.query('SELECT id FROM identity.identity WHERE uid = ?', identityUUID);
         const identity_id = resultSelect[0].id
         await createNewIdentityRole(identity_id);
-        await createCsrsData(identityUUID, identityDto.email);
+		await createCsrsData(identityUUID, identityDto.email);
+		if (commitAfter) {
+			await con.commit();
+		}
     }catch (e){
         _logAndThrow(e);
     }
@@ -122,10 +123,10 @@ async function createCsrsData (uuid, email){
     };
 
     try {
-        await con.query('INSERT INTO csrs.identity SET ?', newCsrsIdentity);
-        var selectResult = await con.query('SELECT id FROM csrs.identity WHERE uid = ?', uuid);
-        createNewCsrsCivilServant(selectResult[0].id, email);
-        createNewCsrsCivilServantOtherAreasOfWork(selectResult[0].id, email);
+		await con.query('INSERT INTO csrs.identity SET ?', newCsrsIdentity);
+		var selectResult = await con.query('SELECT id FROM csrs.identity WHERE uid = ?', uuid);
+		const civilServantId = await createNewCsrsCivilServant(selectResult[0].id, email);
+		createNewCsrsCivilServantOtherAreasOfWork(civilServantId, email);
         console.log('a new CSRS identity created for: %s', email);
     } catch(e) {
         _logAndThrow(e);
@@ -135,10 +136,8 @@ async function createCsrsData (uuid, email){
 // create users
 async function createUsers (numUsers) {
     for(i=1; i<=numUsers; i++){
-        // identity.identity
-        const domain = "example.com"
         const uuid = uuidv1();
-        const mail = "user" + i+ "@" + domain;
+        const mail = getUserEmail(i)
         const _password = "$2a$10$sGfnyPnJ8a0b9R.vqIphKu5vjetS3.Bvi6ISv39bOphq5On0U2m36";
         const logged_in = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
 
@@ -150,8 +149,17 @@ async function createUsers (numUsers) {
             password: _password,
             last_logged_in: logged_in
         };
-       await createIdentityData(newIdentity);
+       await createIdentityData(newIdentity, shouldCommit(i));
     }
+}
+
+function getUserEmail(i) {
+	const domain = "example.com"
+	const id = i + (PAGE * USERS_TO_LOAD)
+	return "user" + id + "@" + domain;
+}
+function shouldCommit(i) {
+	return i%100 === 0;
 }
 
 var calculateElapsedTime = (startTime)=> {
@@ -162,13 +170,20 @@ var calculateElapsedTime = (startTime)=> {
 var main = async () => {
     var startTime = 0;
     try {
-        startTime = Date.now();
-        await cleanUp();
-        await createUsers(2);
+		startTime = Date.now();
+		if (SHOULD_TRUNCATE) {
+			console.log('cleanUp started');
+			await cleanUp();
+			console.log('cleanUp finished');
+		}
+        await createUsers(USERS_TO_LOAD);
     } catch (err) {
         console.log('# Error %s',err.toString());
     } finally {
-        await con.close();
+		console.log('# Finishing off');
+        await con.close().catch((e) => {
+			console.log(e)
+		});
         console.log('Time elapsed: %s s',calculateElapsedTime(startTime));
     }
 };
