@@ -3,16 +3,11 @@ const mysql = require( 'mysql' );
 
 function connectMysql( config ) {
     const connection = mysql.createConnection( config);
+    console.log('connected to MySQL ....');
     return {
-        query( sql, values, cb ) {
-            return util.promisify( connection.query ).call(connection, sql, values, cb );
-        },
-        close(options, cb) {
-            return util.promisify( connection.end ).call( connection, options, cb);
-        },
-        connect(options, cb) {
-            return util.promisify(connection.connect).call(connection, options, cb);
-        }
+        query: util.promisify(connection.query).bind(connection),
+        close: util.promisify(connection.end).bind(connection),
+        connect: util.promisify(connection.connect).bind(connection)
     };
 }
 
