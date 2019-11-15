@@ -1503,7 +1503,7 @@
               <stringProp name="TestPlan.comments">Recorded time was 16082 milliseconds</stringProp>
             </UniformRandomTimer>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="false">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="0"></stringProp>
               </collectionProp>
