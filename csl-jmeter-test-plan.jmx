@@ -53,6 +53,11 @@
             <stringProp name="Argument.value">${__P(base_url_lpg_service,&quot;&quot;)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="FAILED_LOGGING_ENABLED" elementType="Argument">
+            <stringProp name="Argument.name">FAILED_LOGGING_ENABLED</stringProp>
+            <stringProp name="Argument.value">${__P(failed_logging_enabled,false)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
@@ -80,16 +85,19 @@
       <hashTree/>
       <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
         <collectionProp name="AuthManager.auth_list"/>
+        <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
       </AuthManager>
       <hashTree/>
       <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
         <collectionProp name="CookieManager.cookies"/>
         <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
       </CookieManager>
       <hashTree/>
       <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
         <boolProp name="clearEachIteration">true</boolProp>
         <boolProp name="useExpires">false</boolProp>
+        <boolProp name="CacheManager.controlledByThread">false</boolProp>
       </CacheManager>
       <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="tg_MandatoryCourse" enabled="true">
@@ -103,6 +111,7 @@
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration">0</stringProp>
         <stringProp name="ThreadGroup.delay">0</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="ctl_MandatoryCourse" enabled="true">
@@ -351,6 +360,7 @@
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="ctl_SuggestionsForYou" enabled="true">
@@ -590,6 +600,7 @@
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="ctl_LearningRecord" enabled="true">
@@ -829,6 +840,7 @@
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="ctl_AddCourseToLearningPlan" enabled="true">
@@ -1167,6 +1179,7 @@
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="ctl_DoACourse" enabled="true">
@@ -1572,7 +1585,7 @@
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
+      <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -1609,7 +1622,7 @@
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -1646,7 +1659,7 @@
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -1682,6 +1695,54 @@
         </objProp>
         <stringProp name="filename"></stringProp>
       </ResultCollector>
+      <hashTree/>
+      <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="RequestPostProcessorLogger" enabled="true">
+        <stringProp name="scriptLanguage">groovy</stringProp>
+        <stringProp name="parameters"></stringProp>
+        <stringProp name="filename"></stringProp>
+        <stringProp name="cacheKey">true</stringProp>
+        <stringProp name="script">import org.apache.jmeter.config.Arguments;
+import org.apache.jmeter.config.Argument;
+import org.apache.jmeter.protocol.http.control.HeaderManager;
+import org.apache.jmeter.protocol.http.control.CookieManager;
+
+boolean FAILED_LOGGING_ENABLED = vars.get(&quot;FAILED_LOGGING_ENABLED&quot;) == &quot;true&quot;;
+boolean SHOULD_LOG = !prev.isSuccessful() &amp;&amp; FAILED_LOGGING_ENABLED;
+
+log.error(prev.class.name)
+if (SHOULD_LOG) {
+	String journeyName = ctx.getThreadGroup().getName();
+	String method = sampler.getMethod();
+	String url = sampler.getUrl().toString()
+	log.error(&quot;${journeyName}: ${method} ${url} failed&quot;)
+	Arguments arguments = sampler.arguments;
+	if (arguments.getArgumentCount() &gt; 0) {
+		log.error(&quot;Data passed: &quot; + arguments.getArgument(0).getValue())
+	}
+
+	HeaderManager headerManager = sampler.getHeaderManager();
+	if (headerManager != null &amp;&amp; headerManager.size() &gt; 0) {
+		log.error(&quot;Headers:&quot;);
+		int size = headerManager.size();
+		for (int i = 0; i &lt; size; i++) {
+			String name = headerManager.get(i).getName();
+			String value = headerManager.get(i).getValue();
+			log.error(&quot;${name}=${value}&quot;);
+		}
+	}
+
+	CookieManager cookieManager = sampler.getCookieManager();
+	if (cookieManager != null &amp;&amp; cookieManager.getCookieCount() &gt; 0) {
+		log.error(&quot;Cookies:&quot;);
+		int size = cookieManager.getCookieCount();
+		for (int i = 0; i &lt; size; i++) {
+			String name = cookieManager.get(i).getName();
+			String value = cookieManager.get(i).getValue();
+			log.error(&quot;${name}=${value}&quot;);
+		}
+	}
+}</stringProp>
+      </JSR223PostProcessor>
       <hashTree/>
       <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="bsPostProcessor" enabled="true">
         <stringProp name="filename"></stringProp>
@@ -1761,6 +1822,7 @@ log.info(fmtDate + &quot;, journey: &quot; + journeyName + &quot;, step: &quot; 
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </PostThreadGroup>
       <hashTree>
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="bsGenerateSummary" enabled="true">
@@ -1810,6 +1872,7 @@ log.info(&quot;--------------------- END OF TEST SUMMARY ---------------------&q
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </SetupThreadGroup>
       <hashTree>
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="bsInit" enabled="true">
@@ -1884,7 +1947,7 @@ if ( totalSplit.toString().equals(&quot;1.0&quot;) ){
         </BeanShellSampler>
         <hashTree/>
       </hashTree>
-      <kg.apc.jmeter.reporters.bzm.BlazeMeterUploader guiclass="kg.apc.jmeter.reporters.bzm.BlazeMeterUploaderGui" testclass="kg.apc.jmeter.reporters.bzm.BlazeMeterUploader" testname="bzmUploader" enabled="false">
+      <kg.apc.jmeter.reporters.bzm.BlazeMeterUploader guiclass="kg.apc.jmeter.reporters.bzm.BlazeMeterUploaderGui" testclass="kg.apc.jmeter.reporters.bzm.BlazeMeterUploader" testname="bzmUploader" enabled="true">
         <elementProp name="arguments" elementType="Arguments">
           <collectionProp name="Arguments.arguments"/>
         </elementProp>
