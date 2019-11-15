@@ -1411,7 +1411,7 @@
               <stringProp name="RegexExtractor.regex">&lt;a href=&quot;(.*?)&quot;&gt;Start</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default"></stringProp>
-              <stringProp name="RegexExtractor.match_number">0</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
           </hashTree>
@@ -1462,10 +1462,10 @@
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">selectedModule</stringProp>
-              <stringProp name="RegexExtractor.regex">&lt;a href=&quot;(.+?)&quot;(?s).*Start</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;a href=&quot;courses/(.+?)&quot;(?s).*Start</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default"></stringProp>
-              <stringProp name="RegexExtractor.match_number">0</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
           </hashTree>
@@ -1477,7 +1477,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${selectedModule}</stringProp>
+            <stringProp name="HTTPSampler.path">courses/${selectedModule}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1585,7 +1585,7 @@
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="false">
+      <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -1622,7 +1622,7 @@
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -1659,7 +1659,7 @@
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="false">
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -1700,7 +1700,7 @@
         <stringProp name="scriptLanguage">groovy</stringProp>
         <stringProp name="parameters"></stringProp>
         <stringProp name="filename"></stringProp>
-        <stringProp name="cacheKey">true</stringProp>
+        <stringProp name="cacheKey">false</stringProp>
         <stringProp name="script">import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.config.Argument;
 import org.apache.jmeter.protocol.http.control.HeaderManager;
@@ -1709,7 +1709,6 @@ import org.apache.jmeter.protocol.http.control.CookieManager;
 boolean FAILED_LOGGING_ENABLED = vars.get(&quot;FAILED_LOGGING_ENABLED&quot;) == &quot;true&quot;;
 boolean SHOULD_LOG = !prev.isSuccessful() &amp;&amp; FAILED_LOGGING_ENABLED;
 
-log.error(prev.class.name)
 if (SHOULD_LOG) {
 	String journeyName = ctx.getThreadGroup().getName();
 	String method = sampler.getMethod();
@@ -1826,8 +1825,7 @@ log.info(fmtDate + &quot;, journey: &quot; + journeyName + &quot;, step: &quot; 
       </PostThreadGroup>
       <hashTree>
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="bsGenerateSummary" enabled="true">
-          <stringProp name="BeanShellSampler.query">
-String journeyName = ctx.getThreadGroup().getName();
+          <stringProp name="BeanShellSampler.query">String journeyName = ctx.getThreadGroup().getName();
 
 if (journeyName.equals(&quot;tg_SetUp&quot;)){
 	return;
@@ -1859,7 +1857,16 @@ log.info(&quot;--------------------- END OF TEST SUMMARY ---------------------&q
           <stringProp name="BeanShellSampler.parameters"></stringProp>
           <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
         </BeanShellSampler>
-        <hashTree/>
+        <hashTree>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">prev.setIgnore()</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+        </hashTree>
       </hashTree>
       <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="tg_SetUp" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -1912,10 +1919,10 @@ if (!(numThreads &gt;= numJounerys)){
 if ( totalSplit.toString().equals(&quot;1.0&quot;) ){
 
 	String group1 = (Math.round(journey_1_split * numThreads)).toString();
-	String group2 = (Math.round(journey_1_split * numThreads)).toString();
-	String group3 = (Math.round(journey_1_split * numThreads)).toString();
-	String group4 = (Math.round(journey_1_split * numThreads)).toString();
-	String group5 = (Math.round(journey_1_split * numThreads)).toString();
+	String group2 = (Math.round(journey_2_split * numThreads)).toString();
+	String group3 = (Math.round(journey_3_split * numThreads)).toString();
+	String group4 = (Math.round(journey_4_split * numThreads)).toString();
+	String group5 = (Math.round(journey_5_split * numThreads)).toString();
 
 	log.info(&quot;----------- Thread allocation -----------&quot;);
 	log.info(&quot;Thread group 1     : &quot; + group1);
@@ -1926,11 +1933,11 @@ if ( totalSplit.toString().equals(&quot;1.0&quot;) ){
 	log.info(&quot;Total thread split : &quot; + (totalSplit * 100).toString() + &quot;%&quot;);
 	log.info(&quot;-----------------------------------------&quot;);
 	
-	props.put(&quot;threadGroup_1&quot;, (Math.round(journey_1_split * numThreads)).toString());
-	props.put(&quot;threadGroup_2&quot;, (Math.round(journey_2_split * numThreads)).toString());
-	props.put(&quot;threadGroup_3&quot;, (Math.round(journey_3_split * numThreads)).toString());
-	props.put(&quot;threadGroup_4&quot;, (Math.round(journey_4_split * numThreads)).toString());
-	props.put(&quot;threadGroup_5&quot;, (Math.round(journey_5_split * numThreads)).toString());	
+	props.put(&quot;threadGroup_1&quot;, group1);
+	props.put(&quot;threadGroup_2&quot;, group2);
+	props.put(&quot;threadGroup_3&quot;, group3);
+	props.put(&quot;threadGroup_4&quot;, group4);
+	props.put(&quot;threadGroup_5&quot;, group5);	
 	
 }else{
 	log.info(&quot;Total split should add upto 1.0 (100%)\nAborting the test.&quot;);
@@ -1945,7 +1952,16 @@ if ( totalSplit.toString().equals(&quot;1.0&quot;) ){
           <stringProp name="BeanShellSampler.parameters"></stringProp>
           <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
         </BeanShellSampler>
-        <hashTree/>
+        <hashTree>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">prev.setIgnore()</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+        </hashTree>
       </hashTree>
       <kg.apc.jmeter.reporters.bzm.BlazeMeterUploader guiclass="kg.apc.jmeter.reporters.bzm.BlazeMeterUploaderGui" testclass="kg.apc.jmeter.reporters.bzm.BlazeMeterUploader" testname="bzmUploader" enabled="true">
         <elementProp name="arguments" elementType="Arguments">
