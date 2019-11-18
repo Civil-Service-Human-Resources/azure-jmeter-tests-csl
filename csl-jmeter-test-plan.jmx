@@ -1462,7 +1462,7 @@
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">selectedModule</stringProp>
-              <stringProp name="RegexExtractor.regex">&lt;a href=&quot;courses/(.+?)&quot;(?s).*Start</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;a.*href=&quot;.?courses/(.+?)&quot;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default"></stringProp>
               <stringProp name="RegexExtractor.match_number">1</stringProp>
