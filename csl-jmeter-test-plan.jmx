@@ -1855,7 +1855,7 @@ vars.put(&quot;course_title&quot;, &quot;DI3 - Equality, Diversity &amp; Inclusi
                 <stringProp name="RegexExtractor.refname">selectedModule</stringProp>
                 <stringProp name="RegexExtractor.regex">&lt;a.*href=&quot;.?courses/(.+?)&quot;</stringProp>
                 <stringProp name="RegexExtractor.template">$1$</stringProp>
-                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.default">https://perf-lpg.cshr.digital/courses/YzIlqj79RkWUcRzpQriD4A/3G2y-8YBQuCrVZ9peTDzRA</stringProp>
                 <stringProp name="RegexExtractor.match_number">1</stringProp>
               </RegexExtractor>
               <hashTree/>
