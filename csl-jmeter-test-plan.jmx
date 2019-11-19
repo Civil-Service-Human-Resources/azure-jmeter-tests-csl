@@ -1632,7 +1632,7 @@ vars.put(&quot;course_title&quot;, &quot;DI3 - Equality, Diversity &amp; Inclusi
               </hashTree>
               <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
                 <boolProp name="LoopController.continue_forever">true</boolProp>
-                <stringProp name="LoopController.loops">33</stringProp>
+                <stringProp name="LoopController.loops">17</stringProp>
               </LoopController>
               <hashTree>
                 <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set - statements" enabled="true">
