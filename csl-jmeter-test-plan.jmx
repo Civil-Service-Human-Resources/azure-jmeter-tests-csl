@@ -1625,9 +1625,8 @@ vars.put(&quot;course_title&quot;, &quot;DI3 - Equality, Diversity &amp; Inclusi
                 </HeaderManager>
                 <hashTree/>
                 <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                  <stringProp name="RandomTimer.range">5000</stringProp>
-                  <stringProp name="ConstantTimer.delay">2500</stringProp>
-                  <stringProp name="TestPlan.comments">Recorded time was 16082 milliseconds</stringProp>
+                  <stringProp name="RandomTimer.range">1000</stringProp>
+                  <stringProp name="ConstantTimer.delay">500</stringProp>
                 </UniformRandomTimer>
                 <hashTree/>
               </hashTree>
@@ -1718,9 +1717,8 @@ vars.put(&quot;course_title&quot;, &quot;DI3 - Equality, Diversity &amp; Inclusi
                   </HeaderManager>
                   <hashTree/>
                   <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                    <stringProp name="RandomTimer.range">5000</stringProp>
-                    <stringProp name="ConstantTimer.delay">2500</stringProp>
-                    <stringProp name="TestPlan.comments">Recorded time was 16082 milliseconds</stringProp>
+                    <stringProp name="RandomTimer.range">1000</stringProp>
+                    <stringProp name="ConstantTimer.delay">500</stringProp>
                   </UniformRandomTimer>
                   <hashTree/>
                 </hashTree>
@@ -1795,9 +1793,8 @@ vars.put(&quot;course_title&quot;, &quot;DI3 - Equality, Diversity &amp; Inclusi
                 </HeaderManager>
                 <hashTree/>
                 <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                  <stringProp name="RandomTimer.range">5000</stringProp>
-                  <stringProp name="ConstantTimer.delay">2500</stringProp>
-                  <stringProp name="TestPlan.comments">Recorded time was 16082 milliseconds</stringProp>
+                  <stringProp name="RandomTimer.range">1000</stringProp>
+                  <stringProp name="ConstantTimer.delay">500</stringProp>
                 </UniformRandomTimer>
                 <hashTree/>
               </hashTree>
