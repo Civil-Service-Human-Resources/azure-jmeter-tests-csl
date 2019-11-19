@@ -233,7 +233,7 @@
               <stringProp name="RegexExtractor.refname">selectedCourse</stringProp>
               <stringProp name="RegexExtractor.regex">&lt;a class=&quot;lpg-course-link&quot; href=&quot;(.+?)&quot;&gt;(.+?)&lt;/a&gt;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
-              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.default">https://perf-lpg.cshr.digital/courses/TPOpLN_hSiizx8v-yDUHrQ</stringProp>
               <stringProp name="RegexExtractor.match_number">0</stringProp>
             </RegexExtractor>
             <hashTree/>
@@ -1059,7 +1059,7 @@
               <stringProp name="RegexExtractor.refname">suggested_course</stringProp>
               <stringProp name="RegexExtractor.regex">&lt;a class=&quot;lpg-add-from-search&quot; href=&quot;(.*?)&quot;&gt;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
-              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.default">https://perf-lpg.cshr.digital/suggestions-for-you/add/dgDkMIl1S-S3qREUrY-WZg?ref=search</stringProp>
               <stringProp name="RegexExtractor.match_number">0</stringProp>
             </RegexExtractor>
             <hashTree/>
@@ -1397,7 +1397,7 @@
               <stringProp name="RegexExtractor.refname">modules_link</stringProp>
               <stringProp name="RegexExtractor.regex">&lt;a href=&quot;(.*?)&quot;&gt;Start</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
-              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.default">https://perf-lpg.cshr.digital/courses/YzIlqj79RkWUcRzpQriD4A#modules</stringProp>
               <stringProp name="RegexExtractor.match_number">0</stringProp>
             </RegexExtractor>
             <hashTree/>
@@ -1451,7 +1451,7 @@
               <stringProp name="RegexExtractor.refname">selectedModule</stringProp>
               <stringProp name="RegexExtractor.regex">&lt;a href=&quot;(.+?)&quot;(?s).*Start</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
-              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.default">https://perf-lpg.cshr.digital/courses/YzIlqj79RkWUcRzpQriD4A/3G2y-8YBQuCrVZ9peTDzRA</stringProp>
               <stringProp name="RegexExtractor.match_number">0</stringProp>
             </RegexExtractor>
             <hashTree/>
