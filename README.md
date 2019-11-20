@@ -3,7 +3,7 @@
 This repo contains the necessary scripts, tools and JMeter plans for performance testing on CSL.
 
 ## Getting started
-## Prerequisites
+### Prerequisites
 Please have the following tools installed before proceeding:
 * brew
 * Java JDK/JRE 8 

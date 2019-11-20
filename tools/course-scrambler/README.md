@@ -1,18 +1,35 @@
 # Course scrambler
+## Overview  
+The course scrambler is a script used to populate the elastic database with sufficient testing data. It accepts an JSON input of elastic data and will sanitise, replacing with sample content (links, files, e-learning packages).  
 
-Used to change the course metadata to stubs
+## Getting started  
+### Prerequisites
+The following prerequisites are required:
+* npm/node installed
+* access to elastic database on an integrated environment
 
-## Usage
+### Getting data payload  
+Get data from elasticsearch by making a HTTP GET to the following URL:
+```
+https://[env]-elastic.cshr.digital:9200/courses/course/_search?size=999
+```  
+Basic auth with elastic username and password will be need to be sent in the authentication header.
 
-Installing dependencies:
+Save the output of this data into `data/input.ndjson`.
 
+### Installation
+Install dependencies for the script  
 ```
 npm install
 
 ```
 
-Running the script:
+### Usage  
+Run the script   
+```
+npm run start
+```
 
-```
-FILE_OUT_PATH=path_to_output_ndjson FILE_PATH=path_to_input_ndjson npm run start
-```
+The file `output.ndjson` should now be populated with data.
+
+## Next steps
