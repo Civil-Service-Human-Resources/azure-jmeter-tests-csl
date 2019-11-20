@@ -1,6 +1,42 @@
-# JMeter How to guide
+# azure-jmeter-tests-csl
+# Overview
+This repo contains the necessary scripts, tools and JMeter plans for performance testing on CSL.
 
-for more information please refer to the Apache JMeter documentation [here](https://jmeter.apache.org/usermanual/remote-test.html)
+## Getting started
+## Prerequisites
+Please have the following tools installed before proceeding:
+* brew
+* Java JDK/JRE 8 
+
+### Installation 
+#### JMeter installation
+Download JMeter via brew
+```
+brew install jmeter
+```
+Take a note of the install location of JMeter from brew (e.g. `/usr/local/Cellar/jmeter/5.2`)
+
+Copy JMeter plugins from this repo to the `lib` folder of JMeter
+```
+cd plugins/lib
+cp jmeter-plugins-cmn-jmeter-0.4.jar /usr/local/Cellar/jmeter/5.2/libexec/lib/ext/  
+
+cd plugins/lib/ext
+cp * /usr/local/Cellar/jmeter/5.2/libexec/lib/ext/
+```
+
+Run JMeter
+```
+jmeter
+```
+
+#### Editing JMeter scripts
+With the JMeter GUI client, click `File > Open` and select `csl-jmeter-test-plan.jmx`
+
+
+## JMeter how to guide
+
+For more information please refer to the Apache JMeter documentation [here](https://jmeter.apache.org/usermanual/remote-test.html)
 
 ### What's included
 
