@@ -1495,7 +1495,7 @@
                   <stringProp name="RegexExtractor.refname">selectedModule</stringProp>
                   <stringProp name="RegexExtractor.regex">&lt;a.*href=&quot;.?courses/(.+?)&quot;</stringProp>
                   <stringProp name="RegexExtractor.template">$1$</stringProp>
-                  <stringProp name="RegexExtractor.default">3G2y-8YBQuCrVZ9peTDzRA</stringProp>
+                  <stringProp name="RegexExtractor.default">YzIlqj79RkWUcRzpQriD4A/3G2y-8YBQuCrVZ9peTDzRA</stringProp>
                   <stringProp name="RegexExtractor.match_number">${module_counter}</stringProp>
                 </RegexExtractor>
                 <hashTree/>
@@ -1570,7 +1570,7 @@
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol">https</stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">courses/${selectedModule}/xapi/statements?statementId=${request_UUID}&amp;module=${module_id}&amp;titl${module_title}</stringProp>
+                <stringProp name="HTTPSampler.path">courses/${selectedModule}/xapi/statements?statementId=${request_UUID}&amp;module=${module_id}&amp;title=${module_title}</stringProp>
                 <stringProp name="HTTPSampler.method">PUT</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1662,7 +1662,7 @@ vars.put(&quot;course_title&quot;, &quot;DI3 - Equality, Diversity &amp; Inclusi
                   <stringProp name="HTTPSampler.port"></stringProp>
                   <stringProp name="HTTPSampler.protocol">https</stringProp>
                   <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                  <stringProp name="HTTPSampler.path">courses/${selectedModule}/xapi/statements?statementId=${request_UUID}&amp;module=${module_id}&amp;titl${module_title}</stringProp>
+                  <stringProp name="HTTPSampler.path">courses/${selectedModule}/xapi/statements?statementId=${request_UUID}&amp;module=${module_id}&amp;title=${module_title}</stringProp>
                   <stringProp name="HTTPSampler.method">PUT</stringProp>
                   <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                   <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1738,7 +1738,7 @@ vars.put(&quot;course_title&quot;, &quot;DI3 - Equality, Diversity &amp; Inclusi
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol">https</stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">courses/${selectedModule}/xapi/statements?statementId=${request_UUID}&amp;module=${module_id}&amp;titl${module_title}</stringProp>
+                <stringProp name="HTTPSampler.path">courses/${selectedModule}/xapi/statements?statementId=${request_UUID}&amp;module=${module_id}&amp;title=${module_title}</stringProp>
                 <stringProp name="HTTPSampler.method">PUT</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
