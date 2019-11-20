@@ -1,148 +1,193 @@
-const mysql = require('mysql');
 const moment = require('moment');
 const uuidv1 = require('uuid/v1');
+const dbConnector = require('./database-connector')
 
-const con = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'pa55w0rd'
+const con = dbConnector.connectMysql({
+    host: process.env.DB_HOST || 'host',
+    user: process.env.DB_USER || 'user',
+    password: process.env.DB_PASS || 'pass',
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
+const USERS_TO_LOAD = parseInt(process.env.USERS_TO_LOAD || '10' ,10);
+const PAGE = parseInt(process.env.PAGE || '0' ,10);
+const SHOULD_TRUNCATE = (process.env.SHOULD_TRUNCATE || 'true') === 'true';
+const IDENTITY_ROLE = parseInt(process.env.ID_ROLE || '1', 10);
+
 // truncate tables
-var truncateTables = () => {
-    const tablesNames = [
-        'TRUNCATE TABLE identity.identity',
-        'TRUNCATE TABLE identity.identity_role',
-        'TRUNCATE TABLE csrs.identity',
-        'TRUNCATE TABLE csrs.civil_servant',
-        'TRUNCATE TABLE csrs.civil_servant_other_areas_of_work',
-        'TRUNCATE TABLE csrs.civil_servant_interests'
+async function cleanUp () {
+    const deleteStatements = [
+        'delete from csrs.civil_servant_interests  where civil_servant_id >1',
+        'delete from csrs.civil_servant_other_areas_of_work  where civil_servant_id >1',
+        'delete from csrs.identity  where id >1',
+        'delete from csrs.civil_servant  where full_name like "user%@example.com"',
+        'delete from identity.identity_role where identity_id > 1',
+        'delete from identity.identity where email like "user%@example.com"'
     ];
 
-    tablesNames.forEach(statement => {
-        con.query(statement, (err,rows) => {
-            if(err) throw err;
-            console.log("table " + statement + " has been truncated");
-        });
-    })
+    for (var i=0; i<deleteStatements.length; i++){
+        await con.query(deleteStatements[i]);
+	}
+
+	await con.commit()
 }
 
 // identity.identity_role
-var createNewIdentityRole = (uniqueId) => {
+async function createNewIdentityRole (uniqueId) {
 
-    const newIdentityRole = { 
+    const newIdentityRole = {
         identity_id: uniqueId,
-        role_id: 1
+        role_id: IDENTITY_ROLE
     };
-    con.query('INSERT INTO identity.identity_role SET ?', newIdentityRole, (err,rows) => {
-        if(err) throw err;
-    });
+
+    try {
+		await con.query('INSERT INTO identity.identity_role SET ?', newIdentityRole);
+	} catch (err) {
+        _logAndThrow(err);
+    }
 }
 
+function _logAndThrow(error){
+    console.log(error);
+    throw error;
+}
 // csrs.civil_servant
-var createNewCsrsCivilServant = (identityId, mail) => {
-    const newCivilServantIdentity = { 
-        identity_id: identityId, 
-        organisational_unit_id: 1, 
-        grade_id: 4, 
-        profession_id: 22, 
+async function createNewCsrsCivilServant (identityId, mail) {
+    const newCivilServantIdentity = {
+        identity_id: identityId,
+        organisational_unit_id: 1,
+        grade_id: 4,
+        profession_id: 22,
         full_name: mail
     };
-    
-    con.query('INSERT INTO csrs.civil_servant SET ?', newCivilServantIdentity, (err,rows) => {
-        if(err) throw err;
-    });
+
+    try {
+		await con.query('INSERT INTO csrs.civil_servant SET ?', newCivilServantIdentity);
+		var selectResult = await con.query('SELECT id FROM csrs.civil_servant WHERE identity_id = ?', identityId);
+		return selectResult[0].id
+	} catch (err) {
+       _logAndThrow(err);
+    }
 }
 
 // csrs.civil_servant_interests
-var createNewCsrsCivilServantInterest = (identityId, mail) => {
-    const newCivilServantInterests = { 
-        civil_servant_id: identityId, 
+async function createNewCsrsCivilServantInterest (identityId) {
+    const newCivilServantInterests = {
+        civil_servant_id: identityId,
         interests_id: 1
     };
-    
-    con.query('INSERT INTO csrs.civil_servant_interests SET ?', newCivilServantInterests, (err,rows) => {
-        if(err) throw err;
-        console.log("created user " + mail);
-    });
+
+    try{
+        await con.query('INSERT INTO csrs.civil_servant_interests SET ?', newCivilServantInterests);
+	} catch(e) {
+        _logAndThrow(e);
+    }
 }
 
 // csrs.civil_servant_other_areas_of_work
-var createNewCsrsCivilServantOtherAreasOfWork = (identityId, mail) => {
-    const newCivilServantOtherAreasOfWork = { 
-        civil_servant_id: identityId, 
+async function createNewCsrsCivilServantOtherAreasOfWork (identityId) {
+    const newCivilServantOtherAreasOfWork = {
+        civil_servant_id: identityId,
         other_areas_of_work_id: 1
     };
-    
-    con.query('INSERT INTO csrs.civil_servant_other_areas_of_work SET ?', newCivilServantOtherAreasOfWork, (err,rows) => {
-        if(err) throw err;
-        createNewCsrsCivilServantInterest(identityId, mail);
-    });
+
+    try {
+        await con.query('INSERT INTO csrs.civil_servant_other_areas_of_work SET ?', newCivilServantOtherAreasOfWork);
+		createNewCsrsCivilServantInterest(identityId);
+    } catch (err) {
+        _logAndThrow(err);
+    }
 }
 
-// csrs.identity
-var createNewCsrsIdentity = (uuid, mail) => {
-    const newCsrsIdentity = { 
+async function createIdentityData (identityDto, commitAfter) {
+    try {
+		await con.query('INSERT INTO identity.identity SET ?', identityDto);
+        var identityUUID = identityDto.uid;
+        const resultSelect = await con.query('SELECT id FROM identity.identity WHERE uid = ?', identityUUID);
+        const identity_id = resultSelect[0].id
+        await createNewIdentityRole(identity_id);
+		await createCsrsData(identityUUID, identityDto.email);
+		if (commitAfter) {
+			await con.commit();
+		}
+    }catch (e){
+        _logAndThrow(e);
+    }
+    console.log('new identity created uuid: %s', identityDto.uid);
+}
+
+async function createCsrsData (uuid, email){
+    const newCsrsIdentity = {
         uid: uuid
     };
-    
-    con.query('INSERT INTO csrs.identity SET ?', newCsrsIdentity, (err,rows) => {
-        if(err) throw err;
-        con.query('SELECT id FROM csrs.identity WHERE uid = ?', uuid, (err,rows) => {
-            if(err) throw err;
-            createNewCsrsCivilServant(rows[0].id, mail);
-            createNewCsrsCivilServantOtherAreasOfWork(rows[0].id, mail);
-        });
-    });
-}
 
-// close DB connection
-var closeConnection = () => {
-    con.end((err) => {
-        console.log("The connection is terminated gracefully");
-    });
+    try {
+		await con.query('INSERT INTO csrs.identity SET ?', newCsrsIdentity);
+		var selectResult = await con.query('SELECT id FROM csrs.identity WHERE uid = ?', uuid);
+		const civilServantId = await createNewCsrsCivilServant(selectResult[0].id, email);
+		createNewCsrsCivilServantOtherAreasOfWork(civilServantId, email);
+        console.log('a new CSRS identity created for: %s', email);
+    } catch(e) {
+        _logAndThrow(e);
+    }
 }
 
 // create users
-var createUsers = (numUsers) =>{
+async function createUsers (numUsers) {
     for(i=1; i<=numUsers; i++){
-
-        // identity.identity
-        const domain = "example.com"
         const uuid = uuidv1();
-        const mail = "user" + i+ "@" + domain;
-        const password = "$2a$10$sGfnyPnJ8a0b9R.vqIphKu5vjetS3.Bvi6ISv39bOphq5On0U2m36";
+        const mail = getUserEmail(i)
+        const _password = "$2a$10$sGfnyPnJ8a0b9R.vqIphKu5vjetS3.Bvi6ISv39bOphq5On0U2m36";
         const logged_in = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
-    
-        const newIdentity = { 
+
+        const newIdentity = {
             active: true ,
             locked: false,
             uid: uuid,
             email: mail,
-            password ,
+            password: _password,
             last_logged_in: logged_in
         };
-        
-        con.query('INSERT INTO identity.identity SET ?', newIdentity, (err,rows) => {
-            if(err) throw err;
-            // console.log(rows);
-        });
-        
-        con.query('SELECT id FROM identity.identity WHERE uid = ?', uuid, (err,rows) => {
-            if(err) throw err;
-            createNewIdentityRole(rows[0].id);
-            createNewCsrsIdentity(uuid, mail);
-        });
+       await createIdentityData(newIdentity, shouldCommit(i));
     }
 }
 
-con.connect((err) => {
-    if(err){
-        console.log('Error connecting to Db');
-        return;
+function getUserEmail(i) {
+	const domain = "example.com"
+	const id = i + (PAGE * USERS_TO_LOAD)
+	return "user" + id + "@" + domain;
+}
+function shouldCommit(i) {
+	return i%100 === 0;
+}
+
+var calculateElapsedTime = (startTime)=> {
+    var endTime = Date.now();
+    return Math.round( (endTime- startTime)/1000); //in sec
+};
+
+var main = async () => {
+    var startTime = 0;
+    try {
+		startTime = Date.now();
+		if (SHOULD_TRUNCATE) {
+			console.log('cleanUp started');
+			await cleanUp();
+			console.log('cleanUp finished');
+		}
+        await createUsers(USERS_TO_LOAD);
+    } catch (err) {
+        console.log('# Error %s',err.toString());
+    } finally {
+		console.log('# Finishing off');
+        await con.close().catch((e) => {
+			console.log(e)
+		});
+        console.log('Time elapsed: %s s',calculateElapsedTime(startTime));
     }
-    console.log('Connection established');
-    truncateTables();
-    createUsers(3000);
-});
+};
+
+main();
 
