@@ -19,7 +19,7 @@ Take a note of the install location of JMeter from brew (e.g. `/usr/local/Cellar
 Copy JMeter plugins from this repo to the `lib` folder of JMeter
 ```
 cd plugins/lib
-cp jmeter-plugins-cmn-jmeter-0.4.jar /usr/local/Cellar/jmeter/5.2/libexec/lib/ext/  
+cp jmeter-plugins-cmn-jmeter-0.4.jar /usr/local/Cellar/jmeter/5.2/libexec/lib/  
 
 cd plugins/lib/ext
 cp * /usr/local/Cellar/jmeter/5.2/libexec/lib/ext/
