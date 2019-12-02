@@ -4097,8 +4097,19 @@ float journey_2_split = Float.parseFloat(props.get(&quot;userJourney_2_split&quo
 float journey_3_split = Float.parseFloat(props.get(&quot;userJourney_3_split&quot;));
 float journey_4_split = Float.parseFloat(props.get(&quot;userJourney_4_split&quot;));
 float journey_5_split = Float.parseFloat(props.get(&quot;userJourney_5_split&quot;));
+float journey_6_split = Float.parseFloat(props.get(&quot;userJourney_6_split&quot;));
+float journey_7_split = Float.parseFloat(props.get(&quot;userJourney_7_split&quot;));
+float journey_8_split = Float.parseFloat(props.get(&quot;userJourney_8_split&quot;));
 
-float totalSplit = journey_1_split + journey_2_split + journey_3_split + journey_4_split + journey_5_split;
+float totalSplit = 
+	journey_1_split + 
+	journey_2_split + 
+	journey_3_split + 
+	journey_4_split + 
+	journey_5_split + 
+	journey_6_split + 
+	journey_7_split + 
+	journey_8_split;
 
 log.info(&quot;------------ Test plan setup ------------&quot;);
 log.info(&quot;Total user journeys       : &quot; + numJounerys.toString());
@@ -4121,6 +4132,9 @@ if ( totalSplit.toString().equals(&quot;1.0&quot;) ){
 	String group3 = (Math.round(journey_3_split * numThreads)).toString();
 	String group4 = (Math.round(journey_4_split * numThreads)).toString();
 	String group5 = (Math.round(journey_5_split * numThreads)).toString();
+	String group6 = (Math.round(journey_6_split * numThreads)).toString();
+	String group7 = (Math.round(journey_7_split * numThreads)).toString();
+	String group8 = (Math.round(journey_8_split * numThreads)).toString();
 
 	log.info(&quot;----------- Thread allocation -----------&quot;);
 	log.info(&quot;Thread group 1     : &quot; + group1);
@@ -4128,6 +4142,9 @@ if ( totalSplit.toString().equals(&quot;1.0&quot;) ){
 	log.info(&quot;Thread group 3     : &quot; + group3);
 	log.info(&quot;Thread group 4     : &quot; + group4);
 	log.info(&quot;Thread group 5     : &quot; + group5);
+	log.info(&quot;Thread group 6     : &quot; + group6);
+	log.info(&quot;Thread group 7     : &quot; + group7);
+	log.info(&quot;Thread group 8     : &quot; + group8);
 	log.info(&quot;Total thread split : &quot; + (totalSplit * 100).toString() + &quot;%&quot;);
 	log.info(&quot;-----------------------------------------&quot;);
 	
@@ -4136,6 +4153,9 @@ if ( totalSplit.toString().equals(&quot;1.0&quot;) ){
 	props.put(&quot;threadGroup_3&quot;, group3);
 	props.put(&quot;threadGroup_4&quot;, group4);
 	props.put(&quot;threadGroup_5&quot;, group5);	
+	props.put(&quot;threadGroup_6&quot;, group6);
+	props.put(&quot;threadGroup_7&quot;, group7);
+	props.put(&quot;threadGroup_8&quot;, group8);
 	
 }else{
 	log.info(&quot;Total split should add upto 1.0 (100%)\nAborting the test.&quot;);
