@@ -2,9 +2,8 @@
 
 #################
 # Environment domain detail
-base_url_management_service=perf-management.cshr.digital
-base_url_identity_service=perf-identity.cshr.digital
-base_url_lpg_service=perf-lpg.cshr.digital
+base_url_identity_service=staging-identity.cshr.digital
+base_url_lpg_service=staging-lpg.cshr.digital
 
 #################
 # User,rampup related paramters
