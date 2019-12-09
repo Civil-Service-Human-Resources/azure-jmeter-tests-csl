@@ -77,6 +77,12 @@ Also if you want to generate a JTL report you may append the below
 
 ```/search?q=success+profiles```
 
+3. signin-users.csv (This is for the profile setup journey and these users should only have data in the identity and identity_role tables)
+
+```newuser001@example.com,Perf7890```
+
+_You can use the create-signin-users.js nodejs app to create these users_
+
 The user properties file is self explanatory. I have covered a subset of the configuration options below
 
 ### Environment details
