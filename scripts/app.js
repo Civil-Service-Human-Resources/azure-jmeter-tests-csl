@@ -14,6 +14,7 @@ const con = dbConnector.connectMysql({
 const USERS_TO_LOAD = parseInt(process.env.USERS_TO_LOAD || '10' ,10);
 const PAGE = parseInt(process.env.PAGE || '0' ,10);
 const SHOULD_TRUNCATE = (process.env.SHOULD_TRUNCATE || 'true') === 'true';
+const SHOULD_CREATE_CSRS = (process.env.SHOULD_CREATE_CSRS || 'true') === 'true';
 const IDENTITY_ROLE = parseInt(process.env.ID_ROLE || '1', 10);
 
 // truncate tables
@@ -108,7 +109,9 @@ async function createIdentityData (identityDto, commitAfter) {
         const resultSelect = await con.query('SELECT id FROM identity.identity WHERE uid = ?', identityUUID);
         const identity_id = resultSelect[0].id
         await createNewIdentityRole(identity_id);
-		await createCsrsData(identityUUID, identityDto.email);
+        if (SHOULD_CREATE_CSRS) {
+		    await createCsrsData(identityUUID, identityDto.email);
+        }
 		if (commitAfter) {
 			await con.commit();
 		}
