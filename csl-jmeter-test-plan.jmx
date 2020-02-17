@@ -3733,6 +3733,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="ctl_ProfileSetup" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
+          <stringProp name="TestPlan.comments">Each stage must set next intended set in &apos;originalUrl&apos; to ensure flow is redirected there rather than /home because otherwise the profile setup will not work after first pass for each user. For example, after entering name the originalUrl parameter should be set to /profile/organisation to force a redirect to the organisation entry page which won&apos;t normally happen for a user that does have an organisation set.</stringProp>
         </TransactionController>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="req_login" enabled="true">
@@ -3894,7 +3895,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
                 </elementProp>
                 <elementProp name="originalUrl" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.value">/home</stringProp>
+                  <stringProp name="Argument.value">/profile/organisation</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">originalUrl</stringProp>
@@ -3981,7 +3982,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
                 </elementProp>
                 <elementProp name="originalUrl" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.value">/home</stringProp>
+                  <stringProp name="Argument.value">/profile/profession</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">originalUrl</stringProp>
@@ -4068,7 +4069,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
                 </elementProp>
                 <elementProp name="originalUrl" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.value">/home</stringProp>
+                  <stringProp name="Argument.value">/profile/other-areas-of-work</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">originalUrl</stringProp>
@@ -4155,7 +4156,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
                 </elementProp>
                 <elementProp name="originalUrl" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.value">/home</stringProp>
+                  <stringProp name="Argument.value">/profile/interests</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">originalUrl</stringProp>
@@ -4242,7 +4243,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
                 </elementProp>
                 <elementProp name="originalUrl" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.value">/home</stringProp>
+                  <stringProp name="Argument.value">/profile/grade</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">originalUrl</stringProp>
@@ -4329,7 +4330,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
                 </elementProp>
                 <elementProp name="originalUrl" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.value">/home</stringProp>
+                  <stringProp name="Argument.value">/profile/line-manager</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">originalUrl</stringProp>
@@ -4399,7 +4400,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
                 </elementProp>
                 <elementProp name="originalUrl" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.value">/home</stringProp>
+                  <stringProp name="Argument.value">/learning-record</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">originalUrl</stringProp>
@@ -6223,7 +6224,7 @@ log.info(fmtDate + &quot;, journey: &quot; + journeyName + &quot;, step: &quot; 
 </stringProp>
       </BeanShellPostProcessor>
       <hashTree/>
-      <PostThreadGroup guiclass="PostThreadGroupGui" testclass="PostThreadGroup" testname="tg_TearDown" enabled="false">
+      <PostThreadGroup guiclass="PostThreadGroupGui" testclass="PostThreadGroup" testname="tg_TearDown" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
