@@ -4330,7 +4330,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
                 </elementProp>
                 <elementProp name="originalUrl" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.value">/profile/line-manager</stringProp>
+                  <stringProp name="Argument.value">/profile/lineManager</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">originalUrl</stringProp>
