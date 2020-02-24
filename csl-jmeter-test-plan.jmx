@@ -4077,7 +4077,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
                 <elementProp name="profession" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">profession</stringProp>
-                  <stringProp name="Argument.value">${profession}</stringProp>
+                  <stringProp name="Argument.value">/professions/5</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="HTTPArgument.content_type">application/x-www-form-urlencoded</stringProp>
@@ -4173,7 +4173,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
                 <elementProp name="otherAreasOfWork" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">otherAreasOfWork</stringProp>
-                  <stringProp name="Argument.value">${otherAreasOfWork}</stringProp>
+                  <stringProp name="Argument.value">12</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="HTTPArgument.content_type">application/x-www-form-urlencoded</stringProp>
