@@ -4732,7 +4732,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1661247503">Start typing to find your organisation name</stringProp>
+                <stringProp name="1235097328">Enter your name</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
@@ -4875,7 +4875,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-219813326">Your primary area of work</stringProp>
+                <stringProp name="-1661247503">Start typing to find your organisation name</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
@@ -4906,7 +4906,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
                 <elementProp name="_csrf" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">_csrf</stringProp>
-                  <stringProp name="Argument.value">$profileToken}</stringProp>
+                  <stringProp name="Argument.value">${profileToken}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -5018,7 +5018,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="1728728771">Your other areas of work</stringProp>
+                <stringProp name="-219813326">Your primary area of work</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
