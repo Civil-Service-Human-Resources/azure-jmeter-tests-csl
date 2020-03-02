@@ -111,7 +111,7 @@
         <boolProp name="CacheManager.controlledByThread">false</boolProp>
       </CacheManager>
       <hashTree/>
-      <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
+      <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="false">
         <stringProp name="TestPlan.comments">Connection to Perf MySQL DB to set up data for tests</stringProp>
         <boolProp name="autocommit">true</boolProp>
         <stringProp name="checkQuery">select 1 from dual</stringProp>
@@ -131,7 +131,7 @@
         <stringProp name="username">${__P(mysql_u)}</stringProp>
       </JDBCDataSource>
       <hashTree/>
-      <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="JDBC PreProcessor" enabled="true">
+      <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="JDBC PreProcessor" enabled="false">
         <stringProp name="TestPlan.comments">DB setup for initial data state pre-test - currently just resetting new profile users</stringProp>
         <stringProp name="dataSource"></stringProp>
         <stringProp name="query">delete id, cs from identity id join civil_servant cs on id.id = cs.identity_id where cs.full_name like &apos;NewUser%&apos;</stringProp>
