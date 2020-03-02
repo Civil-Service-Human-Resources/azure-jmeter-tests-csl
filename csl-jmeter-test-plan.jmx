@@ -131,20 +131,6 @@
         <stringProp name="username">${__P(mysql_u)}</stringProp>
       </JDBCDataSource>
       <hashTree/>
-      <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="JDBC PreProcessor" enabled="true">
-        <stringProp name="TestPlan.comments">DB setup for initial data state pre-test - currently just resetting new profile users</stringProp>
-        <stringProp name="dataSource"></stringProp>
-        <stringProp name="query">delete id, cs from identity id join civil_servant cs on id.id = cs.identity_id where cs.full_name like &apos;NewUser%&apos;</stringProp>
-        <stringProp name="queryArguments"></stringProp>
-        <stringProp name="queryArgumentsTypes"></stringProp>
-        <stringProp name="queryTimeout"></stringProp>
-        <stringProp name="queryType">Update Statement</stringProp>
-        <stringProp name="resultSetHandler">Store as String</stringProp>
-        <stringProp name="resultSetMaxRows"></stringProp>
-        <stringProp name="resultVariable"></stringProp>
-        <stringProp name="variableNames"></stringProp>
-      </JDBCPreProcessor>
-      <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="tg_MandatoryCourse" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
@@ -7559,6 +7545,20 @@ log.info(&quot;--------------------- END OF TEST SUMMARY ---------------------&q
             <stringProp name="cacheKey">true</stringProp>
             <stringProp name="script">prev.setIgnore()</stringProp>
           </JSR223PostProcessor>
+          <hashTree/>
+          <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="JDBC PreProcessor" enabled="true">
+            <stringProp name="TestPlan.comments">DB setup for initial data state pre-test - currently just resetting new profile users</stringProp>
+            <stringProp name="dataSource">dbSetup</stringProp>
+            <stringProp name="query">delete id, cs from identity id join civil_servant cs on id.id = cs.identity_id where cs.full_name like &apos;NewUser%&apos;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="queryType">Update Statement</stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+          </JDBCPreProcessor>
           <hashTree/>
         </hashTree>
       </hashTree>
