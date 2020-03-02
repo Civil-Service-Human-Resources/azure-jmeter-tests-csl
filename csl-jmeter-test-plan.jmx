@@ -116,7 +116,7 @@
         <boolProp name="autocommit">true</boolProp>
         <stringProp name="checkQuery">select 1 from dual</stringProp>
         <stringProp name="connectionAge">5000</stringProp>
-        <stringProp name="connectionProperties">sslMode=PREFERRED</stringProp>
+        <stringProp name="connectionProperties">useSSL=true</stringProp>
         <stringProp name="dataSource">dbSetup</stringProp>
         <stringProp name="dbUrl">jdbc:mysql://${__P(mysql_host)}:${__P(mysql_port,&quot;3306&quot;)}/csrs</stringProp>
         <stringProp name="driver">com.mysql.jdbc.Driver</stringProp>
