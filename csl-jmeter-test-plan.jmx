@@ -9107,7 +9107,7 @@ vars.put(&quot;f2fModuleTitle&quot;, &quot;f2fmodule_&quot; + UUID.randomUUID().
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">content-management/courses/${createdCourseId}/modules/${createdModuleId}/events-overview/${selectedDate}</stringProp>
+            <stringProp name="HTTPSampler.path">content-management/courses/${createdCourseId}/modules/${createdModuleId}/events-overview/${createdEventId}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9142,7 +9142,7 @@ vars.put(&quot;f2fModuleTitle&quot;, &quot;f2fmodule_&quot; + UUID.randomUUID().
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">content-management/courses/${createdCourseId}/modules/${createdModuleId}/events/${selectedDate}/attendee/61</stringProp>
+            <stringProp name="HTTPSampler.path">content-management/courses/${createdCourseId}/modules/${createdModuleId}/events/${createdEventId}/attendee/61</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9177,7 +9177,7 @@ vars.put(&quot;f2fModuleTitle&quot;, &quot;f2fmodule_&quot; + UUID.randomUUID().
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">content-management/courses/${createdCourseId}/modules/${createdModuleId}/events/${selectedDate}/attendee/61/update</stringProp>
+            <stringProp name="HTTPSampler.path">content-management/courses/${createdCourseId}/modules/${createdModuleId}/events/${createdEventId}/attendee/61/update</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9222,7 +9222,7 @@ vars.put(&quot;f2fModuleTitle&quot;, &quot;f2fmodule_&quot; + UUID.randomUUID().
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">content-management/courses/${createdCourseId}/modules/${createdModuleId}/events/${selectedDate}/attendee/61</stringProp>
+            <stringProp name="HTTPSampler.path">content-management/courses/${createdCourseId}/modules/${createdModuleId}/events/${createdEventId}/attendee/61</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9292,7 +9292,7 @@ vars.put(&quot;f2fModuleTitle&quot;, &quot;f2fmodule_&quot; + UUID.randomUUID().
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">book/${createdCourseId}/${createdModuleId}/${selectedDate}/cancel</stringProp>
+            <stringProp name="HTTPSampler.path">book/${createdCourseId}/${createdModuleId}/${createdEventId}/cancel</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9351,7 +9351,7 @@ vars.put(&quot;f2fModuleTitle&quot;, &quot;f2fmodule_&quot; + UUID.randomUUID().
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">book/${createdCourseId}/${createdModuleId}/${selectedDate}/cancel</stringProp>
+            <stringProp name="HTTPSampler.path">book/${createdCourseId}/${createdModuleId}/${createdEventId}/cancel</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9396,7 +9396,7 @@ vars.put(&quot;f2fModuleTitle&quot;, &quot;f2fmodule_&quot; + UUID.randomUUID().
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">book/${createdCourseId}/${createdModuleId}/${selectedDate}/cancelled</stringProp>
+            <stringProp name="HTTPSampler.path">book/${createdCourseId}/${createdModuleId}/${createdEventId}/cancelled</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
