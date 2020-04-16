@@ -8574,7 +8574,7 @@ vars.put(&quot;f2fModuleTitle&quot;, &quot;f2fmodule_&quot; + UUID.randomUUID().
                 <elementProp name="selected-date" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">selected-date</stringProp>
-                  <stringProp name="Argument.value">${selectedDate}</stringProp>
+                  <stringProp name="Argument.value">${createdEventId}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -8636,7 +8636,7 @@ vars.put(&quot;f2fModuleTitle&quot;, &quot;f2fmodule_&quot; + UUID.randomUUID().
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">book/${createdCourseId}/${createdModuleId}/${selectedDate}/accessibility</stringProp>
+            <stringProp name="HTTPSampler.path">book/${createdCourseId}/${createdModuleId}/${createdEventId}/accessibility</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -8695,7 +8695,7 @@ vars.put(&quot;f2fModuleTitle&quot;, &quot;f2fmodule_&quot; + UUID.randomUUID().
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">book/${createdCourseId}/${createdModuleId}/${selectedDate}/accessibility</stringProp>
+            <stringProp name="HTTPSampler.path">book/${createdCourseId}/${createdModuleId}/${createdEventId}/accessibility</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -8740,7 +8740,7 @@ vars.put(&quot;f2fModuleTitle&quot;, &quot;f2fmodule_&quot; + UUID.randomUUID().
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">book/${createdCourseId}/${createdModuleId}/${selectedDate}/payment</stringProp>
+            <stringProp name="HTTPSampler.path">book/${createdCourseId}/${createdModuleId}/${createdEventId}/payment</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -8799,7 +8799,7 @@ vars.put(&quot;f2fModuleTitle&quot;, &quot;f2fmodule_&quot; + UUID.randomUUID().
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">book/${createdCourseId}/${createdModuleId}/${selectedDate}/payment</stringProp>
+            <stringProp name="HTTPSampler.path">book/${createdCourseId}/${createdModuleId}/${createdEventId}/payment</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -8844,7 +8844,7 @@ vars.put(&quot;f2fModuleTitle&quot;, &quot;f2fmodule_&quot; + UUID.randomUUID().
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">book/${createdCourseId}/${createdModuleId}/${selectedDate}/payment/confirm-po</stringProp>
+            <stringProp name="HTTPSampler.path">book/${createdCourseId}/${createdModuleId}/${createdEventId}/payment/confirm-po</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -8879,7 +8879,7 @@ vars.put(&quot;f2fModuleTitle&quot;, &quot;f2fmodule_&quot; + UUID.randomUUID().
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">book/${createdCourseId}/${createdModuleId}/${selectedDate}/confirm</stringProp>
+            <stringProp name="HTTPSampler.path">book/${createdCourseId}/${createdModuleId}/${createdEventId}/confirm</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -8924,7 +8924,7 @@ vars.put(&quot;f2fModuleTitle&quot;, &quot;f2fmodule_&quot; + UUID.randomUUID().
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">book/${createdCourseId}/${createdModuleId}/${selectedDate}/complete</stringProp>
+            <stringProp name="HTTPSampler.path">book/${createdCourseId}/${createdModuleId}/${createdEventId}/complete</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
