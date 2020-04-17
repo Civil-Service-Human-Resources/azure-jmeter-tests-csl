@@ -8561,7 +8561,7 @@ vars.put(&quot;f2fModuleTitle&quot;, &quot;f2fmodule_&quot; + UUID.randomUUID().
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">token</stringProp>
-              <stringProp name="RegexExtractor.regex">name=&quot;_csrf&quot; value=&quot;(.+?)&quot;/</stringProp>
+              <stringProp name="RegexExtractor.regex">name=&quot;_csrf&quot; value=&quot;(.+?)&quot;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default"></stringProp>
               <stringProp name="RegexExtractor.match_number">1</stringProp>
@@ -8665,7 +8665,7 @@ vars.put(&quot;f2fModuleTitle&quot;, &quot;f2fmodule_&quot; + UUID.randomUUID().
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">token</stringProp>
-              <stringProp name="RegexExtractor.regex">name=&quot;_csrf&quot; value=&quot;(.+?)&quot;/</stringProp>
+              <stringProp name="RegexExtractor.regex">name=&quot;_csrf&quot; value=&quot;(.+?)&quot;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default"></stringProp>
               <stringProp name="RegexExtractor.match_number">1</stringProp>
@@ -8769,7 +8769,7 @@ vars.put(&quot;f2fModuleTitle&quot;, &quot;f2fmodule_&quot; + UUID.randomUUID().
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">token</stringProp>
-              <stringProp name="RegexExtractor.regex">name=&quot;_csrf&quot; value=&quot;(.+?)&quot;/</stringProp>
+              <stringProp name="RegexExtractor.regex">name=&quot;_csrf&quot; value=&quot;(.+?)&quot;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default"></stringProp>
               <stringProp name="RegexExtractor.match_number">1</stringProp>
@@ -9321,7 +9321,7 @@ vars.put(&quot;f2fModuleTitle&quot;, &quot;f2fmodule_&quot; + UUID.randomUUID().
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">token</stringProp>
-              <stringProp name="RegexExtractor.regex">name=&quot;_csrf&quot; value=&quot;(.+?)&quot;/</stringProp>
+              <stringProp name="RegexExtractor.regex">name=&quot;_csrf&quot; value=&quot;(.+?)&quot;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default"></stringProp>
               <stringProp name="RegexExtractor.match_number">1</stringProp>
