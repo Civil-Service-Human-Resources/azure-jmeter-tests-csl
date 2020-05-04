@@ -1432,12 +1432,12 @@
               <stringProp name="RegexExtractor.regex">&lt;span class=&quot;lpg-course-type&quot;&gt;(.+)&lt;/span&gt;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default">https://perf-lpg.cshr.digital/courses/YzIlqj79RkWUcRzpQriD4A/3G2y-8YBQuCrVZ9peTDzRA</stringProp>
-              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <stringProp name="RegexExtractor.match_number">0</stringProp>
             </RegexExtractor>
             <hashTree/>
           </hashTree>
           <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Blended" enabled="true">
-            <stringProp name="IfController.condition">${__groovy(&quot;${course_type}&quot;==&quot;Blended&quot;)}</stringProp>
+            <stringProp name="IfController.condition">${__groovy(&quot;${course_type}&quot;.equals(&quot;Blended&quot;))}</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
             <boolProp name="IfController.useExpression">true</boolProp>
           </IfController>
@@ -1812,7 +1812,7 @@ vars.put(&quot;course_title&quot;, &quot;DI3 - Equality, Diversity &amp; Inclusi
             </hashTree>
           </hashTree>
           <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Not Blended" enabled="true">
-            <stringProp name="IfController.condition">${__groovy(&quot;${course_type}&quot;!=&quot;Blended&quot;)}</stringProp>
+            <stringProp name="IfController.condition">${__groovy(!&quot;${course_type}&quot;.equals(&quot;Blended&quot;))}</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
             <boolProp name="IfController.useExpression">true</boolProp>
           </IfController>
