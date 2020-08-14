@@ -10024,7 +10024,7 @@ log.info(&quot;--------------------- END OF TEST SUMMARY ---------------------&q
       <hashTree>
         <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Thread group setup" enabled="true">
           <stringProp name="cacheKey">true</stringProp>
-          <stringProp name="filename">/home/ubuntu/azure-jmeter-tests-csl/scripts/setup.groovy</stringProp>
+          <stringProp name="filename">/opt/tests/azure-jmeter-tests-csl/scripts/setup.groovy</stringProp>
           <stringProp name="parameters"></stringProp>
           <stringProp name="script"></stringProp>
           <stringProp name="scriptLanguage">groovy</stringProp>
