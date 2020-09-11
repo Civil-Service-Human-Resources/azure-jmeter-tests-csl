@@ -16,7 +16,7 @@ mysql_pwd=$3
 mysql_port=$4
 
 echo -e "${YELLOW}***** Commencing to run test *****${NC}"
-cd /opt/tests/azure-jmeter-tests-csl; rm -f jmeter.log; nohup ../apache-jmeter-5.2/bin/jmeter -p user.properties -Jmysql_host=${mysql_host} -Jmysql_port=${mysql_port} -Jmysql_u=${mysql_user} -Jmysql_pw=${mysql_pwd} -n -t  csl-jmeter-test-plan.jmx -j testresult.log  -l jmeter.log > jmeter.log 2>%1 &
+cd /opt/tests/azure-jmeter-tests-csl; rm -f jmeter.log; export JVM_ARGS="-Xms8g -Xmx8g"; nohup ../apache-jmeter-5.2/bin/jmeter -p user.properties -Jmysql_host=${mysql_host} -Jmysql_port=${mysql_port} -Jmysql_u=${mysql_user} -Jmysql_pw=${mysql_pwd} -n -t  csl-jmeter-test-plan.jmx -j testresult.log  -l jmeter.log > jmeter.log 2>jmeter-errors.log &
 
 
 # Checking that the test is running
