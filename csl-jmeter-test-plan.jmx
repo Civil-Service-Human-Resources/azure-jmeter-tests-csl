@@ -1423,7 +1423,7 @@
               <stringProp name="RegexExtractor.regex">&lt;a href=&quot;(.*?)&quot;&gt;Start</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default">https://perf-lpg.cshr.digital/courses/YzIlqj79RkWUcRzpQriD4A#modules</stringProp>
-              <stringProp name="RegexExtractor.match_number">0</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Course type extractor" enabled="true">
@@ -1432,7 +1432,7 @@
               <stringProp name="RegexExtractor.regex">&lt;span class=&quot;lpg-course-type&quot;&gt;(.+)&lt;/span&gt;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default">https://perf-lpg.cshr.digital/courses/YzIlqj79RkWUcRzpQriD4A/3G2y-8YBQuCrVZ9peTDzRA</stringProp>
-              <stringProp name="RegexExtractor.match_number">0</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
           </hashTree>
