@@ -11,7 +11,7 @@ The following prerequisites are required:
 ### Getting data payload  
 Get data from elasticsearch by making a HTTP GET to the following URL:
 ```
-https://[env]-elastic.cshr.digital:9200/courses/course/_search?size=999
+https://elastic.[environment].learn.civilservice.gov.uk:9200/courses/course/_search?size=999
 ```  
 Basic auth with elastic username and password will be need to be sent in the authentication header.
 
