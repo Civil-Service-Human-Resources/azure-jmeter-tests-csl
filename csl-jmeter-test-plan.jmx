@@ -269,7 +269,7 @@
               <stringProp name="RegexExtractor.refname">selectedCourse</stringProp>
               <stringProp name="RegexExtractor.regex">&lt;a class=&quot;lpg-course-link&quot; href=&quot;(.+?)&quot;&gt;(.+?)&lt;/a&gt;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
-              <stringProp name="RegexExtractor.default">https://perf-lpg.cshr.digital/courses/TPOpLN_hSiizx8v-yDUHrQ</stringProp>
+              <stringProp name="RegexExtractor.default">https://performance.learn.civilservice.gov.uk/courses/TPOpLN_hSiizx8v-yDUHrQ</stringProp>
               <stringProp name="RegexExtractor.match_number">0</stringProp>
             </RegexExtractor>
             <hashTree/>
@@ -1087,7 +1087,7 @@
               <stringProp name="RegexExtractor.refname">suggested_course</stringProp>
               <stringProp name="RegexExtractor.regex">&lt;a class=&quot;lpg-add-from-search&quot; href=&quot;(.*?)&quot;&gt;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
-              <stringProp name="RegexExtractor.default">https://perf-lpg.cshr.digital/suggestions-for-you/add/dgDkMIl1S-S3qREUrY-WZg?ref=search</stringProp>
+              <stringProp name="RegexExtractor.default">https://performance.learn.civilservice.gov.uk/suggestions-for-you/add/dgDkMIl1S-S3qREUrY-WZg?ref=search</stringProp>
               <stringProp name="RegexExtractor.match_number">0</stringProp>
             </RegexExtractor>
             <hashTree/>
@@ -1422,7 +1422,7 @@
               <stringProp name="RegexExtractor.refname">modules_link</stringProp>
               <stringProp name="RegexExtractor.regex">&lt;a href=&quot;(.*?)&quot;&gt;Start</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
-              <stringProp name="RegexExtractor.default">https://perf-lpg.cshr.digital/courses/YzIlqj79RkWUcRzpQriD4A#modules</stringProp>
+              <stringProp name="RegexExtractor.default">https://performance.learn.civilservice.gov.uk/courses/YzIlqj79RkWUcRzpQriD4A#modules</stringProp>
               <stringProp name="RegexExtractor.match_number">0</stringProp>
             </RegexExtractor>
             <hashTree/>
@@ -1431,7 +1431,7 @@
               <stringProp name="RegexExtractor.refname">course_type</stringProp>
               <stringProp name="RegexExtractor.regex">&lt;span class=&quot;lpg-course-type&quot;&gt;(.+)&lt;/span&gt;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
-              <stringProp name="RegexExtractor.default">https://perf-lpg.cshr.digital/courses/YzIlqj79RkWUcRzpQriD4A/3G2y-8YBQuCrVZ9peTDzRA</stringProp>
+              <stringProp name="RegexExtractor.default">https://performance.learn.civilservice.gov.uk/courses/YzIlqj79RkWUcRzpQriD4A/3Ye2JjBWQ5WhehZ7yUAGcw</stringProp>
               <stringProp name="RegexExtractor.match_number">0</stringProp>
             </RegexExtractor>
             <hashTree/>
@@ -2156,7 +2156,7 @@ vars.put(&quot;course_title&quot;, &quot;DI3 - Equality, Diversity &amp; Inclusi
               <stringProp name="RegexExtractor.refname">selectedCourse</stringProp>
               <stringProp name="RegexExtractor.regex">&lt;a class=&quot;lpg-course-link&quot; href=&quot;(.+?)&quot;&gt;(.+?)&lt;/a&gt;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
-              <stringProp name="RegexExtractor.default">https://perf-lpg.cshr.digital/courses/TPOpLN_hSiizx8v-yDUHrQ</stringProp>
+              <stringProp name="RegexExtractor.default">https://performance.learn.civilservice.gov.uk/courses/TPOpLN_hSiizx8v-yDUHrQ</stringProp>
               <stringProp name="RegexExtractor.match_number">0</stringProp>
             </RegexExtractor>
             <hashTree/>
@@ -3180,7 +3180,7 @@ vars.put(&quot;course_title&quot;, &quot;DI3 - Equality, Diversity &amp; Inclusi
               <stringProp name="RegexExtractor.refname">selectedCourse</stringProp>
               <stringProp name="RegexExtractor.regex">&lt;a class=&quot;lpg-course-link&quot; href=&quot;(.+?)&quot;&gt;(.+?)&lt;/a&gt;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
-              <stringProp name="RegexExtractor.default">https://perf-lpg.cshr.digital/courses/TPOpLN_hSiizx8v-yDUHrQ</stringProp>
+              <stringProp name="RegexExtractor.default">https://performance.learn.civilservice.gov.uk/courses/TPOpLN_hSiizx8v-yDUHrQ</stringProp>
               <stringProp name="RegexExtractor.match_number">0</stringProp>
             </RegexExtractor>
             <hashTree/>
@@ -3680,7 +3680,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
               <stringProp name="RegexExtractor.refname">modules_link</stringProp>
               <stringProp name="RegexExtractor.regex">&lt;a href=&quot;(.*?)&quot;&gt;Start</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
-              <stringProp name="RegexExtractor.default">https://perf-lpg.cshr.digital/courses/YzIlqj79RkWUcRzpQriD4A#modules</stringProp>
+              <stringProp name="RegexExtractor.default">https://performance.learn.civilservice.gov.uk/courses/YzIlqj79RkWUcRzpQriD4A#modules</stringProp>
               <stringProp name="RegexExtractor.match_number">0</stringProp>
             </RegexExtractor>
             <hashTree/>
@@ -3689,7 +3689,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
               <stringProp name="RegexExtractor.refname">course_type</stringProp>
               <stringProp name="RegexExtractor.regex">&lt;span class=&quot;lpg-course-type&quot;&gt;(.+)&lt;/span&gt;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
-              <stringProp name="RegexExtractor.default">https://perf-lpg.cshr.digital/courses/YzIlqj79RkWUcRzpQriD4A/3G2y-8YBQuCrVZ9peTDzRA</stringProp>
+              <stringProp name="RegexExtractor.default">https://performance.learn.civilservice.gov.uk/courses/YzIlqj79RkWUcRzpQriD4A/3Ye2JjBWQ5WhehZ7yUAGcw</stringProp>
               <stringProp name="RegexExtractor.match_number">0</stringProp>
             </RegexExtractor>
             <hashTree/>
@@ -3860,7 +3860,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Origin" elementType="Header">
                   <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://perf-identity.cshr.digital</stringProp>
+                  <stringProp name="Header.value">https://identity.performance.learn.civilservice.gov.uk</stringProp>
                 </elementProp>
                 <elementProp name="Content-Type" elementType="Header">
                   <stringProp name="Header.name">Content-Type</stringProp>
@@ -3947,7 +3947,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Origin" elementType="Header">
                   <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://perf-identity.cshr.digital</stringProp>
+                  <stringProp name="Header.value">https://identity.performance.learn.civilservice.gov.uk</stringProp>
                 </elementProp>
                 <elementProp name="Content-Type" elementType="Header">
                   <stringProp name="Header.name">Content-Type</stringProp>
@@ -4043,7 +4043,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Origin" elementType="Header">
                   <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://perf-identity.cshr.digital</stringProp>
+                  <stringProp name="Header.value">https://identity.performance.learn.civilservice.gov.uk</stringProp>
                 </elementProp>
                 <elementProp name="Content-Type" elementType="Header">
                   <stringProp name="Header.name">Content-Type</stringProp>
@@ -4139,7 +4139,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Origin" elementType="Header">
                   <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://perf-identity.cshr.digital</stringProp>
+                  <stringProp name="Header.value">https://identity.performance.learn.civilservice.gov.uk</stringProp>
                 </elementProp>
                 <elementProp name="Content-Type" elementType="Header">
                   <stringProp name="Header.name">Content-Type</stringProp>
@@ -4226,7 +4226,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Origin" elementType="Header">
                   <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://perf-identity.cshr.digital</stringProp>
+                  <stringProp name="Header.value">https://identity.performance.learn.civilservice.gov.uk</stringProp>
                 </elementProp>
                 <elementProp name="Content-Type" elementType="Header">
                   <stringProp name="Header.name">Content-Type</stringProp>
@@ -4322,7 +4322,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Origin" elementType="Header">
                   <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://perf-identity.cshr.digital</stringProp>
+                  <stringProp name="Header.value">https://identity.performance.learn.civilservice.gov.uk</stringProp>
                 </elementProp>
                 <elementProp name="Content-Type" elementType="Header">
                   <stringProp name="Header.name">Content-Type</stringProp>
@@ -4418,7 +4418,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Origin" elementType="Header">
                   <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://perf-identity.cshr.digital</stringProp>
+                  <stringProp name="Header.value">https://identity.performance.learn.civilservice.gov.uk</stringProp>
                 </elementProp>
                 <elementProp name="Content-Type" elementType="Header">
                   <stringProp name="Header.name">Content-Type</stringProp>
@@ -4513,7 +4513,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Origin" elementType="Header">
                   <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://perf-identity.cshr.digital</stringProp>
+                  <stringProp name="Header.value">https://identity.performance.learn.civilservice.gov.uk</stringProp>
                 </elementProp>
                 <elementProp name="Content-Type" elementType="Header">
                   <stringProp name="Header.name">Content-Type</stringProp>
@@ -4704,7 +4704,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
                 <elementProp name="redirect_uri" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">redirect_uri</stringProp>
-                  <stringProp name="Argument.value">https://perf-lpg.cshr.digital/authenticate</stringProp>
+                  <stringProp name="Argument.value">https://performance.learn.civilservice.gov.uk/authenticate</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -5358,7 +5358,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
                 <elementProp name="interests" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">interests</stringProp>
-                  <stringProp name="Argument.value">https://perf-civil-servant-registry.cshr.digital/interests/2</stringProp>
+                  <stringProp name="Argument.value">https://civil-servant-registry.performance.learn.civilservice.gov.uk/interests/2</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -5495,7 +5495,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
                 <elementProp name="grade" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">grade</stringProp>
-                  <stringProp name="Argument.value">https://perf-civil-servant-registry.cshr.digital/grades/3</stringProp>
+                  <stringProp name="Argument.value">https://civil-servant-registry.performance.learn.civilservice.gov.uk/grades/3</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -5921,7 +5921,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
               <stringProp name="RegexExtractor.refname">selectedCourse</stringProp>
               <stringProp name="RegexExtractor.regex">&lt;a class=&quot;lpg-course-link&quot; href=&quot;(.+?)&quot;&gt;(.+?)&lt;/a&gt;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
-              <stringProp name="RegexExtractor.default">https://perf-lpg.cshr.digital/courses/TPOpLN_hSiizx8v-yDUHrQ</stringProp>
+              <stringProp name="RegexExtractor.default">https://performance.learn.civilservice.gov.uk/courses/TPOpLN_hSiizx8v-yDUHrQ</stringProp>
               <stringProp name="RegexExtractor.match_number">0</stringProp>
             </RegexExtractor>
             <hashTree/>
