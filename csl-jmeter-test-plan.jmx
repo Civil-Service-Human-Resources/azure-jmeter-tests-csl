@@ -747,10 +747,10 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1450840576">Something went horribly wrong</stringProp>
+                <stringProp name="-4475113">/login?error=failed</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.sample_label</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
               <intProp name="Assertion.test_type">6</intProp>
             </ResponseAssertion>
@@ -983,10 +983,10 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1450840576">Something went horribly wrong</stringProp>
+                <stringProp name="-4475113">/login?error=failed</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.sample_label</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
               <intProp name="Assertion.test_type">6</intProp>
             </ResponseAssertion>
@@ -1319,10 +1319,10 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1450840576">Something went horribly wrong</stringProp>
+                <stringProp name="-4475113">/login?error=failed</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.sample_label</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
               <intProp name="Assertion.test_type">6</intProp>
             </ResponseAssertion>
@@ -2162,10 +2162,10 @@ vars.put(&quot;course_title&quot;, &quot;DI3 - Equality, Diversity &amp; Inclusi
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1450840576">Something went horribly wrong</stringProp>
+                <stringProp name="-4475113">/login?error=failed</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.sample_label</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
               <intProp name="Assertion.test_type">6</intProp>
             </ResponseAssertion>
@@ -3186,10 +3186,10 @@ vars.put(&quot;course_title&quot;, &quot;DI3 - Equality, Diversity &amp; Inclusi
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1450840576">Something went horribly wrong</stringProp>
+                <stringProp name="-4475113">/login?error=failed</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.sample_label</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
               <intProp name="Assertion.test_type">6</intProp>
             </ResponseAssertion>
@@ -3577,10 +3577,10 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1450840576">Something went horribly wrong</stringProp>
+                <stringProp name="-4475113">/login?error=failed</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.sample_label</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
               <intProp name="Assertion.test_type">6</intProp>
             </ResponseAssertion>
@@ -5927,10 +5927,10 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1450840576">Something went horribly wrong</stringProp>
+                <stringProp name="-4475113">/login?error=failed</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.sample_label</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
               <intProp name="Assertion.test_type">6</intProp>
             </ResponseAssertion>
