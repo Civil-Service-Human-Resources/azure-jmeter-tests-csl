@@ -1564,83 +1564,6 @@
                 </UniformRandomTimer>
                 <hashTree/>
               </hashTree>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="xapi - start" enabled="true">
-                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                  <collectionProp name="Arguments.arguments">
-                    <elementProp name="" elementType="HTTPArgument">
-                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                      <stringProp name="Argument.value">{&quot;id&quot;:&quot;${request_UUID}&quot;,&quot;timestamp&quot;:&quot;${request_timestamp}&quot;,&quot;actor&quot;:{&quot;objectType&quot;:&quot;Agent&quot;,&quot;name&quot;:&quot;Noop&quot;},&quot;verb&quot;:{&quot;id&quot;:&quot;http://adlnet.gov/expapi/verbs/launched&quot;,&quot;display&quot;:{&quot;en-GB&quot;:&quot;launched&quot;}},&quot;context&quot;:{&quot;platform&quot;:&quot;desktop&quot;,&quot;contextActivities&quot;:{&quot;category&quot;:[{&quot;id&quot;:&quot;http://www.gomolearning.com&quot;,&quot;objectType&quot;:&quot;Activity&quot;,&quot;definition&quot;:{&quot;type&quot;:&quot;http://id.tincanapi.com/activitytype/source&quot;,&quot;name&quot;:{&quot;en-GB&quot;:&quot;gomo&quot;}}}]}},&quot;object&quot;:{&quot;id&quot;:&quot;http://www.gomolearning.com/xapi/activities/course/${course_page}&quot;,&quot;objectType&quot;:&quot;Activity&quot;,&quot;definition&quot;:{&quot;name&quot;:{&quot;en-GB&quot;:&quot;${course_title}&quot;},&quot;extensions&quot;:{&quot;http://id.tincanapi.com/extension/browser-info&quot;:&quot;{\&quot;code_name\&quot;:\&quot;Mozilla\&quot;,\&quot;name\&quot;:\&quot;Netscape\&quot;,\&quot;version\&quot;:\&quot;5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36\&quot;,\&quot;platform\&quot;:\&quot;MacIntel\&quot;,\&quot;user-agent-header\&quot;:\&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36\&quot;,\&quot;cookies-enabled\&quot;:true}&quot;}}}}&#xd;
-&#xd;
-</stringProp>
-                      <stringProp name="Argument.metadata">=</stringProp>
-                    </elementProp>
-                  </collectionProp>
-                </elementProp>
-                <stringProp name="HTTPSampler.domain">${BASE_URL_LPG_SERVICE}</stringProp>
-                <stringProp name="HTTPSampler.port"></stringProp>
-                <stringProp name="HTTPSampler.protocol">https</stringProp>
-                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">courses/${selectedModule}/xapi/statements?statementId=${request_UUID}&amp;module=${module_id}&amp;title=${module_title}</stringProp>
-                <stringProp name="HTTPSampler.method">PUT</stringProp>
-                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              </HTTPSamplerProxy>
-              <hashTree>
-                <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
-                  <stringProp name="cacheKey">true</stringProp>
-                  <stringProp name="filename"></stringProp>
-                  <stringProp name="parameters"></stringProp>
-                  <stringProp name="script">import java.util.Date;
-import java.util.TimeZone;
-import java.util.UUID;
-
-def now = new Date();
-def nowFormatted = now.format(&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;&quot;, TimeZone.getTimeZone(&apos;UTC&apos;));
-
-vars.put(&quot;request_UUID&quot;, UUID.randomUUID().toString());
-vars.put(&quot;course_page&quot;, &quot;p12809&quot;);
-vars.put(&quot;request_timestamp&quot;, nowFormatted);
-vars.put(&quot;course_title&quot;, &quot;DI3 - Equality, Diversity &amp; Inclusion: Unconscious bias - Unconscious bias&quot;);</stringProp>
-                  <stringProp name="scriptLanguage">groovy</stringProp>
-                </JSR223PreProcessor>
-                <hashTree/>
-                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-                  <collectionProp name="HeaderManager.headers">
-                    <elementProp name="Sec-Fetch-Site" elementType="Header">
-                      <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                      <stringProp name="Header.value">same-origin</stringProp>
-                    </elementProp>
-                    <elementProp name="" elementType="Header">
-                      <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                      <stringProp name="Header.value">cors</stringProp>
-                    </elementProp>
-                    <elementProp name="" elementType="Header">
-                      <stringProp name="Header.name">X-Experience-API-Version</stringProp>
-                      <stringProp name="Header.value">1.0.1</stringProp>
-                    </elementProp>
-                    <elementProp name="" elementType="Header">
-                      <stringProp name="Header.name">Content-Type</stringProp>
-                      <stringProp name="Header.value">application/json</stringProp>
-                    </elementProp>
-                    <elementProp name="" elementType="Header">
-                      <stringProp name="Header.name">DNT</stringProp>
-                      <stringProp name="Header.value">1</stringProp>
-                    </elementProp>
-                  </collectionProp>
-                </HeaderManager>
-                <hashTree/>
-                <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                  <stringProp name="RandomTimer.range">${__BeanShell(3000 * ${WAIT_MULTIPLIER})}</stringProp>
-                  <stringProp name="ConstantTimer.delay">${__BeanShell(1500 * ${WAIT_MULTIPLIER})}</stringProp>
-                </UniformRandomTimer>
-                <hashTree/>
-              </hashTree>
               <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
                 <boolProp name="LoopController.continue_forever">true</boolProp>
                 <stringProp name="LoopController.loops">17</stringProp>
@@ -1657,156 +1580,6 @@ vars.put(&quot;course_title&quot;, &quot;DI3 - Equality, Diversity &amp; Inclusi
                   <boolProp name="stopThread">false</boolProp>
                   <stringProp name="shareMode">shareMode.thread</stringProp>
                 </CSVDataSet>
-                <hashTree/>
-                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="xapi - progress" enabled="true">
-                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                    <collectionProp name="Arguments.arguments">
-                      <elementProp name="" elementType="HTTPArgument">
-                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                        <stringProp name="Argument.value">{&quot;id&quot;:&quot;${request_UUID}&quot;,&quot;timestamp&quot;:&quot;${request_timestamp}&quot;,&quot;actor&quot;:{&quot;objectType&quot;:&quot;Agent&quot;,&quot;name&quot;:&quot;Noop&quot;},&quot;verb&quot;:{&quot;id&quot;:&quot;http://adlnet.gov/expapi/verbs/experienced&quot;,&quot;display&quot;:{&quot;en-GB&quot;:&quot;experienced&quot;}},&quot;context&quot;:{&quot;contextActivities&quot;:{&quot;category&quot;:[{&quot;id&quot;:&quot;http://www.gomolearning.com&quot;,&quot;objectType&quot;:&quot;Activity&quot;,&quot;definition&quot;:{&quot;type&quot;:&quot;http://id.tincanapi.com/activitytype/source&quot;,&quot;name&quot;:{&quot;en-GB&quot;:&quot;gomo&quot;}}}]}},&quot;object&quot;:{&quot;id&quot;:&quot;http://www.gomolearning.com/xapi/activities/page/${statement_link}&quot;,&quot;objectType&quot;:&quot;Activity&quot;,&quot;definition&quot;:{&quot;name&quot;:{&quot;en-GB&quot;:&quot;${statement_title}&quot;},&quot;extensions&quot;:{&quot;http://www.gomolearning.com/xapi/extension/progress&quot;:&quot;${progress}&quot;}}}}</stringProp>
-                        <stringProp name="Argument.metadata">=</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </elementProp>
-                  <stringProp name="HTTPSampler.domain">${BASE_URL_LPG_SERVICE}</stringProp>
-                  <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.protocol">https</stringProp>
-                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                  <stringProp name="HTTPSampler.path">courses/${selectedModule}/xapi/statements?statementId=${request_UUID}&amp;module=${module_id}&amp;title=${module_title}</stringProp>
-                  <stringProp name="HTTPSampler.method">PUT</stringProp>
-                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                </HTTPSamplerProxy>
-                <hashTree>
-                  <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
-                    <stringProp name="cacheKey">true</stringProp>
-                    <stringProp name="filename"></stringProp>
-                    <stringProp name="parameters"></stringProp>
-                    <stringProp name="script">import java.util.Date;
-import java.util.TimeZone;
-import java.util.UUID;
-
-def now = new Date();
-def nowFormatted = now.format(&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;&quot;, TimeZone.getTimeZone(&apos;UTC&apos;));
-
-vars.put(&quot;request_UUID&quot;, UUID.randomUUID().toString());
-vars.put(&quot;course_page&quot;, &quot;p12809&quot;);
-vars.put(&quot;request_timestamp&quot;, nowFormatted);
-vars.put(&quot;course_title&quot;, &quot;DI3 - Equality, Diversity &amp; Inclusion: Unconscious bias - Unconscious bias&quot;);</stringProp>
-                    <stringProp name="scriptLanguage">groovy</stringProp>
-                  </JSR223PreProcessor>
-                  <hashTree/>
-                  <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-                    <collectionProp name="HeaderManager.headers">
-                      <elementProp name="Sec-Fetch-Site" elementType="Header">
-                        <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                        <stringProp name="Header.value">same-origin</stringProp>
-                      </elementProp>
-                      <elementProp name="" elementType="Header">
-                        <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                        <stringProp name="Header.value">cors</stringProp>
-                      </elementProp>
-                      <elementProp name="" elementType="Header">
-                        <stringProp name="Header.name">X-Experience-API-Version</stringProp>
-                        <stringProp name="Header.value">1.0.1</stringProp>
-                      </elementProp>
-                      <elementProp name="" elementType="Header">
-                        <stringProp name="Header.name">Content-Type</stringProp>
-                        <stringProp name="Header.value">application/json</stringProp>
-                      </elementProp>
-                      <elementProp name="" elementType="Header">
-                        <stringProp name="Header.name">DNT</stringProp>
-                        <stringProp name="Header.value">1</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </HeaderManager>
-                  <hashTree/>
-                  <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                    <stringProp name="RandomTimer.range">${__BeanShell(3000 * ${WAIT_MULTIPLIER})}</stringProp>
-                    <stringProp name="ConstantTimer.delay">${__BeanShell(1500 * ${WAIT_MULTIPLIER})}</stringProp>
-                  </UniformRandomTimer>
-                  <hashTree/>
-                </hashTree>
-              </hashTree>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="xapi - finish" enabled="true">
-                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                  <collectionProp name="Arguments.arguments">
-                    <elementProp name="" elementType="HTTPArgument">
-                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                      <stringProp name="Argument.value">{&quot;id&quot;:&quot;${request_UUID}&quot;,&quot;timestamp&quot;:&quot;${request_timestamp}&quot;,&quot;actor&quot;:{&quot;objectType&quot;:&quot;Agent&quot;,&quot;name&quot;:&quot;Noop&quot;},&quot;verb&quot;:{&quot;id&quot;:&quot;http://adlnet.gov/expapi/verbs/completed&quot;,&quot;display&quot;:{&quot;en-GB&quot;:&quot;completed&quot;}},&quot;result&quot;:{&quot;completion&quot;:true},&quot;context&quot;:{&quot;contextActivities&quot;:{&quot;category&quot;:[{&quot;id&quot;:&quot;http://www.gomolearning.com&quot;,&quot;objectType&quot;:&quot;Activity&quot;,&quot;definition&quot;:{&quot;type&quot;:&quot;http://id.tincanapi.com/activitytype/source&quot;,&quot;name&quot;:{&quot;en-GB&quot;:&quot;gomo&quot;}}}]}},&quot;object&quot;:{&quot;id&quot;:&quot;http://www.gomolearning.com/xapi/activities/course/${course_page}&quot;,&quot;objectType&quot;:&quot;Activity&quot;,&quot;definition&quot;:{&quot;name&quot;:{&quot;en-GB&quot;:&quot;${course_title}&quot;}}}}</stringProp>
-                      <stringProp name="Argument.metadata">=</stringProp>
-                    </elementProp>
-                  </collectionProp>
-                </elementProp>
-                <stringProp name="HTTPSampler.domain">${BASE_URL_LPG_SERVICE}</stringProp>
-                <stringProp name="HTTPSampler.port"></stringProp>
-                <stringProp name="HTTPSampler.protocol">https</stringProp>
-                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">courses/${selectedModule}/xapi/statements?statementId=${request_UUID}&amp;module=${module_id}&amp;title=${module_title}</stringProp>
-                <stringProp name="HTTPSampler.method">PUT</stringProp>
-                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              </HTTPSamplerProxy>
-              <hashTree>
-                <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
-                  <stringProp name="cacheKey">true</stringProp>
-                  <stringProp name="filename"></stringProp>
-                  <stringProp name="parameters"></stringProp>
-                  <stringProp name="script">import java.util.Date;
-import java.util.TimeZone;
-import java.util.UUID;
-
-def now = new Date();
-def nowFormatted = now.format(&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;&quot;, TimeZone.getTimeZone(&apos;UTC&apos;));
-
-vars.put(&quot;request_UUID&quot;, UUID.randomUUID().toString());
-vars.put(&quot;course_page&quot;, &quot;p12809&quot;);
-vars.put(&quot;request_timestamp&quot;, nowFormatted);
-vars.put(&quot;course_title&quot;, &quot;DI3 - Equality, Diversity &amp; Inclusion: Unconscious bias - Unconscious bias&quot;);</stringProp>
-                  <stringProp name="scriptLanguage">groovy</stringProp>
-                </JSR223PreProcessor>
-                <hashTree/>
-                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-                  <collectionProp name="HeaderManager.headers">
-                    <elementProp name="Sec-Fetch-Site" elementType="Header">
-                      <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                      <stringProp name="Header.value">same-origin</stringProp>
-                    </elementProp>
-                    <elementProp name="" elementType="Header">
-                      <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                      <stringProp name="Header.value">cors</stringProp>
-                    </elementProp>
-                    <elementProp name="" elementType="Header">
-                      <stringProp name="Header.name">X-Experience-API-Version</stringProp>
-                      <stringProp name="Header.value">1.0.1</stringProp>
-                    </elementProp>
-                    <elementProp name="" elementType="Header">
-                      <stringProp name="Header.name">Content-Type</stringProp>
-                      <stringProp name="Header.value">application/json</stringProp>
-                    </elementProp>
-                    <elementProp name="" elementType="Header">
-                      <stringProp name="Header.name">DNT</stringProp>
-                      <stringProp name="Header.value">1</stringProp>
-                    </elementProp>
-                  </collectionProp>
-                </HeaderManager>
-                <hashTree/>
-                <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                  <stringProp name="RandomTimer.range">${__BeanShell(3000 * ${WAIT_MULTIPLIER})}</stringProp>
-                  <stringProp name="ConstantTimer.delay">${__BeanShell(1500 * ${WAIT_MULTIPLIER})}</stringProp>
-                </UniformRandomTimer>
                 <hashTree/>
               </hashTree>
             </hashTree>
@@ -3288,42 +3061,42 @@ vars.put(&quot;course_title&quot;, &quot;DI3 - Equality, Diversity &amp; Inclusi
               <collectionProp name="Arguments.arguments">
                 <elementProp name="startDay" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.value">${startDay}</stringProp>
+                  <stringProp name="Argument.value">1</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">startDay</stringProp>
                 </elementProp>
                 <elementProp name="startMonth" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.value">${startMonth}</stringProp>
+                  <stringProp name="Argument.value">1</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">startMonth</stringProp>
                 </elementProp>
                 <elementProp name="startYear" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.value">${startYear}</stringProp>
+                  <stringProp name="Argument.value">2020</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">startYear</stringProp>
                 </elementProp>
                 <elementProp name="endDay" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.value">${endDay}</stringProp>
+                  <stringProp name="Argument.value">30</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">endDay</stringProp>
                 </elementProp>
                 <elementProp name="endMonth" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.value">${endMonth}</stringProp>
+                  <stringProp name="Argument.value">1</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">endMonth</stringProp>
                 </elementProp>
                 <elementProp name="endYear" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.value">${endYear}</stringProp>
+                  <stringProp name="Argument.value">2020</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">endYear</stringProp>
@@ -4682,10 +4455,10 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1450840576">Something went horribly wrong</stringProp>
+                <stringProp name="-4475113">/login?error=failed</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.sample_label</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
               <intProp name="Assertion.test_type">6</intProp>
             </ResponseAssertion>
@@ -4711,7 +4484,7 @@ vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
                 <elementProp name="client_id" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">client_id</stringProp>
-                  <stringProp name="Argument.value">9fbd4ae2-2db3-44c7-9544-88e80255b56e</stringProp>
+                  <stringProp name="Argument.value">9fbd4ae2-2db3-44c8-9544-88e80255b56e</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -6675,7 +6448,7 @@ vars.put(&quot;course_title&quot;, &quot;course_&quot; + UUID.randomUUID().toStr
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="parent" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">${courseCreatedOrganisation}</stringProp>
+                    <stringProp name="Argument.value">10211</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                     <boolProp name="HTTPArgument.use_equals">true</boolProp>
                     <stringProp name="Argument.name">parent</stringProp>
