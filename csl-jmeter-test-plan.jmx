@@ -3123,21 +3123,7 @@
               <stringProp name="parameters"></stringProp>
               <stringProp name="filename"></stringProp>
               <stringProp name="cacheKey">true</stringProp>
-              <stringProp name="script">import java.time.LocalDate
-import java.time.temporal.ChronoUnit
-
-int duration = Integer.parseInt(vars.get(&quot;report_duration&quot;));
-
-LocalDate reportEnd = LocalDate.now();
-LocalDate reportStart = reportEnd.minus(duration, ChronoUnit.DAYS);
-
-vars.put(&quot;startDay&quot;, reportStart.getDayOfMonth().toString());
-vars.put(&quot;startMonth&quot;, reportStart.getMonthValue().toString());
-vars.put(&quot;startYear&quot;, reportStart.getYear().toString());
-
-vars.put(&quot;endDay&quot;, reportEnd.getDayOfMonth().toString());
-vars.put(&quot;endMonth&quot;, reportEnd.getMonthValue().toString());
-vars.put(&quot;endYear&quot;, reportEnd.getYear().toString());</stringProp>
+              <stringProp name="script"></stringProp>
             </JSR223PreProcessor>
             <hashTree/>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
@@ -4406,7 +4392,7 @@ vars.put(&quot;course_title&quot;, &quot;course_&quot; + UUID.randomUUID().toStr
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="parent" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">${courseCreatedOrganisation}</stringProp>
+                    <stringProp name="Argument.value">10211</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                     <boolProp name="HTTPArgument.use_equals">true</boolProp>
                     <stringProp name="Argument.name">parent</stringProp>
