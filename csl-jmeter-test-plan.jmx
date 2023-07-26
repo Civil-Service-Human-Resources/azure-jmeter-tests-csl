@@ -151,7 +151,7 @@
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Log in to CSL" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Go to sign in page" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
@@ -205,7 +205,7 @@
             </RegexExtractor>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login Form Submit" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Submit sign in form" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="password" elementType="HTTPArgument">
@@ -1767,7 +1767,31 @@ log.info(&quot;--------------------- END OF TEST SUMMARY ---------------------&q
           <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="JDBC PreProcessor" enabled="true">
             <stringProp name="TestPlan.comments">DB setup for initial data state pre-test - currently just resetting new profile users</stringProp>
             <stringProp name="dataSource">dbSetup</stringProp>
-            <stringProp name="query">delete id, cs from identity id join civil_servant cs on id.id = cs.identity_id where cs.full_name like &apos;NewUser%&apos;</stringProp>
+            <stringProp name="query">SET SQL_SAFE_UPDATES = 0;
+
+-- Delete interest entries from civil servants
+
+DELETE FROM csrs.civil_servant_interests WHERE civil_servant_id IN (SELECT csrs.civil_servant.id FROM csrs.civil_servant
+	JOIN csrs.identity ON csrs.identity.id = csrs.civil_servant.identity_id
+    JOIN identity.identity ON identity.identity.uid = csrs.identity.uid
+    WHERE email LIKE &apos;user%@example.com&apos;);
+
+-- Delete other areas of work entries from civil servants
+    
+DELETE FROM csrs.civil_servant_other_areas_of_work WHERE civil_servant_id IN (SELECT csrs.civil_servant.id FROM csrs.civil_servant
+	JOIN csrs.identity ON csrs.identity.id = csrs.civil_servant.identity_id
+    JOIN identity.identity ON identity.identity.uid = csrs.identity.uid
+    WHERE email LIKE &apos;user%@example.com&apos;);
+
+-- Delete civil servant records
+
+DELETE FROM  csrs.civil_servant 
+	WHERE identity_id IN (SELECT csrs.identity.id FROM csrs.identity JOIN identity.identity ON identity.identity.uid = csrs.identity.uid WHERE email LIKE &apos;user%@example.com&apos;);
+
+-- Delete CSRS Identity entries
+
+DELETE FROM csrs.identity WHERE uid IN (
+SELECT uid FROM identity.identity WHERE email LIKE &apos;user%@example.com&apos;);</stringProp>
             <stringProp name="queryArguments"></stringProp>
             <stringProp name="queryArgumentsTypes"></stringProp>
             <stringProp name="queryTimeout"></stringProp>
