@@ -131,6 +131,87 @@
         <stringProp name="username">${__P(mysql_u)}</stringProp>
       </JDBCDataSource>
       <hashTree/>
+      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="Set up database" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">stoptest</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </SetupThreadGroup>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Thread group setup" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename">/opt/tests/azure-jmeter-tests-csl/scripts/setup.groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script"></stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">prev.setIgnore()</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+          <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="JDBC PreProcessor" enabled="true">
+            <stringProp name="TestPlan.comments">DB setup for initial data state pre-test - currently just resetting new profile users</stringProp>
+            <stringProp name="dataSource">dbSetup</stringProp>
+            <stringProp name="query">SET SQL_SAFE_UPDATES = 0;
+
+-- Delete interest entries from civil servants
+
+DELETE FROM csrs.civil_servant_interests WHERE civil_servant_id IN (SELECT csrs.civil_servant.id FROM csrs.civil_servant
+	JOIN csrs.identity ON csrs.identity.id = csrs.civil_servant.identity_id
+    JOIN identity.identity ON identity.identity.uid = csrs.identity.uid
+    WHERE email LIKE &apos;user%@example.com&apos;);
+
+-- Delete other areas of work entries from civil servants
+    
+DELETE FROM csrs.civil_servant_other_areas_of_work WHERE civil_servant_id IN (SELECT csrs.civil_servant.id FROM csrs.civil_servant
+	JOIN csrs.identity ON csrs.identity.id = csrs.civil_servant.identity_id
+    JOIN identity.identity ON identity.identity.uid = csrs.identity.uid
+    WHERE email LIKE &apos;user%@example.com&apos;);
+
+-- Delete civil servant records
+
+DELETE FROM  csrs.civil_servant 
+	WHERE identity_id IN (SELECT csrs.identity.id FROM csrs.identity JOIN identity.identity ON identity.identity.uid = csrs.identity.uid WHERE email LIKE &apos;user%@example.com&apos;);
+
+-- Delete CSRS Identity entries
+
+DELETE FROM csrs.identity WHERE uid IN (
+SELECT uid FROM identity.identity WHERE email LIKE &apos;user%@example.com&apos;);
+
+
+-- Ensure line manager identity is active and unlocked
+
+UPDATE 
+	identity.identity 
+SET 
+	active = 1,
+    locked = 0
+WHERE 
+	email = &apos;lc687@test.com&apos;;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="queryType">Update Statement</stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+          </JDBCPreProcessor>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="All tests" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
@@ -1731,87 +1812,6 @@ log.info(&quot;--------------------- END OF TEST SUMMARY ---------------------&q
             <stringProp name="cacheKey">true</stringProp>
             <stringProp name="script">prev.setIgnore()</stringProp>
           </JSR223PostProcessor>
-          <hashTree/>
-        </hashTree>
-      </hashTree>
-      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="tg_SetUp" enabled="true">
-        <stringProp name="ThreadGroup.on_sample_error">stoptest</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
-        </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
-        <boolProp name="ThreadGroup.scheduler">false</boolProp>
-        <stringProp name="ThreadGroup.duration"></stringProp>
-        <stringProp name="ThreadGroup.delay"></stringProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
-      </SetupThreadGroup>
-      <hashTree>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Thread group setup" enabled="true">
-          <stringProp name="cacheKey">true</stringProp>
-          <stringProp name="filename">/opt/tests/azure-jmeter-tests-csl/scripts/setup.groovy</stringProp>
-          <stringProp name="parameters"></stringProp>
-          <stringProp name="script"></stringProp>
-          <stringProp name="scriptLanguage">groovy</stringProp>
-        </JSR223Sampler>
-        <hashTree>
-          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
-            <stringProp name="scriptLanguage">groovy</stringProp>
-            <stringProp name="parameters"></stringProp>
-            <stringProp name="filename"></stringProp>
-            <stringProp name="cacheKey">true</stringProp>
-            <stringProp name="script">prev.setIgnore()</stringProp>
-          </JSR223PostProcessor>
-          <hashTree/>
-          <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="JDBC PreProcessor" enabled="true">
-            <stringProp name="TestPlan.comments">DB setup for initial data state pre-test - currently just resetting new profile users</stringProp>
-            <stringProp name="dataSource">dbSetup</stringProp>
-            <stringProp name="query">SET SQL_SAFE_UPDATES = 0;
-
--- Delete interest entries from civil servants
-
-DELETE FROM csrs.civil_servant_interests WHERE civil_servant_id IN (SELECT csrs.civil_servant.id FROM csrs.civil_servant
-	JOIN csrs.identity ON csrs.identity.id = csrs.civil_servant.identity_id
-    JOIN identity.identity ON identity.identity.uid = csrs.identity.uid
-    WHERE email LIKE &apos;user%@example.com&apos;);
-
--- Delete other areas of work entries from civil servants
-    
-DELETE FROM csrs.civil_servant_other_areas_of_work WHERE civil_servant_id IN (SELECT csrs.civil_servant.id FROM csrs.civil_servant
-	JOIN csrs.identity ON csrs.identity.id = csrs.civil_servant.identity_id
-    JOIN identity.identity ON identity.identity.uid = csrs.identity.uid
-    WHERE email LIKE &apos;user%@example.com&apos;);
-
--- Delete civil servant records
-
-DELETE FROM  csrs.civil_servant 
-	WHERE identity_id IN (SELECT csrs.identity.id FROM csrs.identity JOIN identity.identity ON identity.identity.uid = csrs.identity.uid WHERE email LIKE &apos;user%@example.com&apos;);
-
--- Delete CSRS Identity entries
-
-DELETE FROM csrs.identity WHERE uid IN (
-SELECT uid FROM identity.identity WHERE email LIKE &apos;user%@example.com&apos;);
-
-
--- Ensure line manager identity is active and unlocked
-
-UPDATE 
-	identity.identity 
-SET 
-	active = 1,
-    locked = 0
-WHERE 
-	email = &apos;lc687@test.com&apos;;</stringProp>
-            <stringProp name="queryArguments"></stringProp>
-            <stringProp name="queryArgumentsTypes"></stringProp>
-            <stringProp name="queryTimeout"></stringProp>
-            <stringProp name="queryType">Update Statement</stringProp>
-            <stringProp name="resultSetHandler">Store as String</stringProp>
-            <stringProp name="resultSetMaxRows"></stringProp>
-            <stringProp name="resultVariable"></stringProp>
-            <stringProp name="variableNames"></stringProp>
-          </JDBCPreProcessor>
           <hashTree/>
         </hashTree>
       </hashTree>
