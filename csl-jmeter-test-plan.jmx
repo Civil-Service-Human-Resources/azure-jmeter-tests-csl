@@ -1791,7 +1791,18 @@ DELETE FROM  csrs.civil_servant
 -- Delete CSRS Identity entries
 
 DELETE FROM csrs.identity WHERE uid IN (
-SELECT uid FROM identity.identity WHERE email LIKE &apos;user%@example.com&apos;);</stringProp>
+SELECT uid FROM identity.identity WHERE email LIKE &apos;user%@example.com&apos;);
+
+
+-- Ensure line manager identity is active and unlocked
+
+UPDATE 
+	identity.identity 
+SET 
+	active = 1,
+    locked = 0
+WHERE 
+	email = &apos;lc687@test.com&apos;;</stringProp>
             <stringProp name="queryArguments"></stringProp>
             <stringProp name="queryArgumentsTypes"></stringProp>
             <stringProp name="queryTimeout"></stringProp>
