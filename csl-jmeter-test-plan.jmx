@@ -2098,10 +2098,10 @@ WHERE
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="778328154">Select any accessibility requirements</stringProp>
+                <stringProp name="2095366907">https://performance.learn.civilservice.gov.uk/book/BM1EINiZT2iST-4ScSngeA/nroPAvccTSWgL8_AgYirbA/4O8Z_4vrSUyouFkoFKRUcQ/accessibility</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.sample_label</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
               <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
@@ -2158,10 +2158,10 @@ WHERE
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-98788673">Booking summary</stringProp>
+                <stringProp name="-1562120659">https://performance.learn.civilservice.gov.uk/book/BM1EINiZT2iST-4ScSngeA/nroPAvccTSWgL8_AgYirbA/4O8Z_4vrSUyouFkoFKRUcQ/confirm</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.sample_label</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
               <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
