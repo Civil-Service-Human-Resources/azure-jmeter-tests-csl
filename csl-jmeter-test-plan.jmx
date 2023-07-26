@@ -232,10 +232,6 @@ WHERE
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
         <hashTree>
-          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Wait 30 seconds before starting tests" enabled="true">
-            <stringProp name="ConstantTimer.delay">30000</stringProp>
-          </ConstantTimer>
-          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Go to sign in page" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
