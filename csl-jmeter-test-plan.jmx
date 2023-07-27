@@ -2046,6 +2046,16 @@ WHERE
               <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
+            <HtmlExtractor guiclass="HtmlExtractorGui" testclass="HtmlExtractor" testname="Extract event ID from date selection page" enabled="true">
+              <stringProp name="HtmlExtractor.refname">event_id_from_date_selection</stringProp>
+              <stringProp name="HtmlExtractor.expr">.multiple-choice--booking input[name=&apos;selected-date&apos;]</stringProp>
+              <stringProp name="HtmlExtractor.attribute">value</stringProp>
+              <stringProp name="HtmlExtractor.default">4O8Z_4vrSUyouFkoFKRUcQ</stringProp>
+              <boolProp name="HtmlExtractor.default_empty_value">false</boolProp>
+              <stringProp name="HtmlExtractor.match_number"></stringProp>
+              <stringProp name="HtmlExtractor.extractor_impl"></stringProp>
+            </HtmlExtractor>
+            <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Face-to-face module: Choose a date" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
@@ -2053,7 +2063,7 @@ WHERE
                 <elementProp name="selected-date" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">selected-date</stringProp>
-                  <stringProp name="Argument.value">4O8Z_4vrSUyouFkoFKRUcQ</stringProp>
+                  <stringProp name="Argument.value">${event_id_from_date_selection}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -2096,14 +2106,14 @@ WHERE
               <stringProp name="TestPlan.comments">Recorded time was 5850 milliseconds</stringProp>
             </UniformRandomTimer>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert: error message is not shown" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="2095366907">https://performance.learn.civilservice.gov.uk/book/BM1EINiZT2iST-4ScSngeA/nroPAvccTSWgL8_AgYirbA/4O8Z_4vrSUyouFkoFKRUcQ/accessibility</stringProp>
+                <stringProp name="295341380">Sorry, there is a problem with this service</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.sample_label</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">2</intProp>
+              <intProp name="Assertion.test_type">6</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
@@ -2156,14 +2166,14 @@ WHERE
               <stringProp name="TestPlan.comments">Recorded time was 5850 milliseconds</stringProp>
             </UniformRandomTimer>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert: error message is not shown" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1562120659">https://performance.learn.civilservice.gov.uk/book/BM1EINiZT2iST-4ScSngeA/nroPAvccTSWgL8_AgYirbA/4O8Z_4vrSUyouFkoFKRUcQ/confirm</stringProp>
+                <stringProp name="295341380">Sorry, there is a problem with this service</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.sample_label</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">2</intProp>
+              <intProp name="Assertion.test_type">6</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
