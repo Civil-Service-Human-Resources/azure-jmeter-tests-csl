@@ -2349,7 +2349,7 @@ WHERE
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-717313372">https://cdn.performance.learn.civilservice.gov.uk/lpgdevcontent/BM1EINiZT2iST-4ScSngeA/qnRimFZYRKafgWJ1YARsuw/Untitled.pdf</stringProp>
+                <stringProp name="-482600918">https://cdn.performance.learn.civilservice.gov.uk</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.sample_label</stringProp>
