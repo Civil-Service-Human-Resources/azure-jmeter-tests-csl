@@ -2063,7 +2063,7 @@ WHERE
                 <elementProp name="selected-date" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">selected-date</stringProp>
-                  <stringProp name="Argument.value">4O8Z_4vrSUyouFkoFKRUcQ</stringProp>
+                  <stringProp name="Argument.value">4fpcKi6dTAK5iTBni0Zi6g</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -2080,7 +2080,7 @@ WHERE
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">book/dCWXniyiRaq7dbDHA9QuQg/aET5HxlHSuWk_4zvMLxtXQ/choose-date/choose-date</stringProp>
+            <stringProp name="HTTPSampler.path">book/dCWXniyiRaq7dbDHA9QuQg/aET5HxlHSuWk_4zvMLxtXQ/4fpcKi6dTAK5iTBni0Zi6g/accessibility</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
