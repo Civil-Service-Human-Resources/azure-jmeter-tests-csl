@@ -1827,7 +1827,7 @@ WHERE
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">courses/BM1EINiZT2iST-4ScSngeA</stringProp>
+            <stringProp name="HTTPSampler.path">courses/dCWXniyiRaq7dbDHA9QuQg</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1884,7 +1884,7 @@ WHERE
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">courses/BM1EINiZT2iST-4ScSngeA/QKtFlwjXSia4tczzG3psZg</stringProp>
+            <stringProp name="HTTPSampler.path">courses/dCWXniyiRaq7dbDHA9QuQg/70hOSRPlSomSU-48AOJNIA</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1922,7 +1922,7 @@ WHERE
               <stringProp name="TestPlan.comments">Recorded time was 5845 milliseconds</stringProp>
             </UniformRandomTimer>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Link points to a Rustici Engine module" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert: Link points to a Rustici Engine module" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="1856913075">https://rustici-engine</stringProp>
               </collectionProp>
@@ -1941,7 +1941,7 @@ WHERE
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">courses/BM1EINiZT2iST-4ScSngeA/Ne3EIIdUT0atM8by_On5sg</stringProp>
+            <stringProp name="HTTPSampler.path">courses/dCWXniyiRaq7dbDHA9QuQg/k6hLWnPQR2KcqV-nHSbWqQ</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1979,7 +1979,7 @@ WHERE
               <stringProp name="TestPlan.comments">Recorded time was 5845 milliseconds</stringProp>
             </UniformRandomTimer>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Link points to GOV.UK" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert: Link points to GOV.UK" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="693247036">https://www.gov.uk</stringProp>
               </collectionProp>
@@ -1998,7 +1998,7 @@ WHERE
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">book/BM1EINiZT2iST-4ScSngeA/nroPAvccTSWgL8_AgYirbA/choose-date</stringProp>
+            <stringProp name="HTTPSampler.path">book/dCWXniyiRaq7dbDHA9QuQg/aET5HxlHSuWk_4zvMLxtXQ/choose-date</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2080,7 +2080,7 @@ WHERE
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">book/BM1EINiZT2iST-4ScSngeA/nroPAvccTSWgL8_AgYirbA/choose-date</stringProp>
+            <stringProp name="HTTPSampler.path">book/dCWXniyiRaq7dbDHA9QuQg/aET5HxlHSuWk_4zvMLxtXQ/choose-date/choose-date</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2125,7 +2125,7 @@ WHERE
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">book/BM1EINiZT2iST-4ScSngeA/nroPAvccTSWgL8_AgYirbA/4O8Z_4vrSUyouFkoFKRUcQ/accessibility</stringProp>
+            <stringProp name="HTTPSampler.path">book/dCWXniyiRaq7dbDHA9QuQg/aET5HxlHSuWk_4zvMLxtXQ/4fpcKi6dTAK5iTBni0Zi6g/accessibility</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2207,7 +2207,7 @@ WHERE
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">book/BM1EINiZT2iST-4ScSngeA/nroPAvccTSWgL8_AgYirbA/4O8Z_4vrSUyouFkoFKRUcQ/accessibility</stringProp>
+            <stringProp name="HTTPSampler.path">book/dCWXniyiRaq7dbDHA9QuQg/aET5HxlHSuWk_4zvMLxtXQ/4fpcKi6dTAK5iTBni0Zi6g/accessibility</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2252,7 +2252,7 @@ WHERE
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">book/BM1EINiZT2iST-4ScSngeA/nroPAvccTSWgL8_AgYirbA/4O8Z_4vrSUyouFkoFKRUcQ/complete</stringProp>
+            <stringProp name="HTTPSampler.path">book/dCWXniyiRaq7dbDHA9QuQg/aET5HxlHSuWk_4zvMLxtXQ/4fpcKi6dTAK5iTBni0Zi6g/complete</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2309,7 +2309,7 @@ WHERE
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">courses/BM1EINiZT2iST-4ScSngeA/wMNCVhvkRrmPBLeGegw3wg</stringProp>
+            <stringProp name="HTTPSampler.path">courses/dCWXniyiRaq7dbDHA9QuQg/_xixspaMSTe4ubzEe6xpog</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2366,7 +2366,7 @@ WHERE
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">courses/BM1EINiZT2iST-4ScSngeA/-WUo7oktRgmA3DsoXF2_Dw</stringProp>
+            <stringProp name="HTTPSampler.path">courses/dCWXniyiRaq7dbDHA9QuQg/f1gcOX1nSoyhpq5kIHRO0g</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2423,7 +2423,7 @@ WHERE
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">courses/BM1EINiZT2iST-4ScSngeA/dfaKqunXQL2ycNgqkwZj9w</stringProp>
+            <stringProp name="HTTPSampler.path">courses/dCWXniyiRaq7dbDHA9QuQg/pFCeW8CCQ56AG-J2BXHTog</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
